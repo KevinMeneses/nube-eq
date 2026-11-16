@@ -1,0 +1,1398 @@
+desc:Nube EQ - ecualizador parametrico (16 bandas, M/SC, dinamico)
+//tags: equalizer eq parametric dynamic mid-side analyzer
+//author: Kev Meneses + Claude
+//version: 1.0.0
+//
+// ARCHIVO GENERADO por tools/build.py a partir de src/nube_eq.template.jsfx.
+// No editar el .jsfx directamente: editar la plantilla y correr `python3 tools/build.py`.
+
+slider1:0<-24,24,0.1>-Salida (dB)
+slider2:0<0,1,1{Apagado,Encendido}>-Auto gain
+slider3:1<0,2,1{Apagado,Salida,Entrada y salida}>-Analizador
+slider4:1<0,3,1{6 dB,12 dB,24 dB,30 dB}>-Escala de la grafica
+slider5:0<0,1,1{Normal,Solo los cambios}>-Escuchar cambios
+slider6:0<0,9,1{-,Voz Tonor - Nube baja (cadena exacta),Voz rap - punto de partida,Voz hablada tipo radio / telefono,De-esser (banda dinamica en las s),Hueco para la voz (Rhodes o coros; sidechain 3/4),808 / bajo limpio,Hi-hats y clap sin siseo,Master sutil (Nube baja),Vacio (sin bandas)}>-Cargar preset
+slider11:0<0,2,1{Sin usar,Encendida,Apagada}>-B1 Estado
+slider12:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B1 Tipo
+slider13:1000<20,20000,0.1:log=1000>-B1 Frecuencia (Hz)
+slider14:0<-30,30,0.1>-B1 Ganancia (dB)
+slider15:1<0.1,18,0.01:log=1>-B1 Q
+slider16:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B1 Pendiente
+slider17:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B1 Canal
+slider18:0<-24,24,0.1>-B1 Dinamica rango (dB)
+slider19:-30<-60,0,0.1>-B1 Dinamica umbral (dB)
+slider20:5<0.1,100,0.1:log=5>-B1 Dinamica ataque (ms)
+slider21:120<5,1000,1:log=100>-B1 Dinamica release (ms)
+slider22:0<0,1,1{Interna,Sidechain 3/4}>-B1 Dinamica fuente
+slider23:0<0,2,1{Sin usar,Encendida,Apagada}>-B2 Estado
+slider24:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B2 Tipo
+slider25:1000<20,20000,0.1:log=1000>-B2 Frecuencia (Hz)
+slider26:0<-30,30,0.1>-B2 Ganancia (dB)
+slider27:1<0.1,18,0.01:log=1>-B2 Q
+slider28:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B2 Pendiente
+slider29:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B2 Canal
+slider30:0<-24,24,0.1>-B2 Dinamica rango (dB)
+slider31:-30<-60,0,0.1>-B2 Dinamica umbral (dB)
+slider32:5<0.1,100,0.1:log=5>-B2 Dinamica ataque (ms)
+slider33:120<5,1000,1:log=100>-B2 Dinamica release (ms)
+slider34:0<0,1,1{Interna,Sidechain 3/4}>-B2 Dinamica fuente
+slider35:0<0,2,1{Sin usar,Encendida,Apagada}>-B3 Estado
+slider36:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B3 Tipo
+slider37:1000<20,20000,0.1:log=1000>-B3 Frecuencia (Hz)
+slider38:0<-30,30,0.1>-B3 Ganancia (dB)
+slider39:1<0.1,18,0.01:log=1>-B3 Q
+slider40:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B3 Pendiente
+slider41:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B3 Canal
+slider42:0<-24,24,0.1>-B3 Dinamica rango (dB)
+slider43:-30<-60,0,0.1>-B3 Dinamica umbral (dB)
+slider44:5<0.1,100,0.1:log=5>-B3 Dinamica ataque (ms)
+slider45:120<5,1000,1:log=100>-B3 Dinamica release (ms)
+slider46:0<0,1,1{Interna,Sidechain 3/4}>-B3 Dinamica fuente
+slider47:0<0,2,1{Sin usar,Encendida,Apagada}>-B4 Estado
+slider48:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B4 Tipo
+slider49:1000<20,20000,0.1:log=1000>-B4 Frecuencia (Hz)
+slider50:0<-30,30,0.1>-B4 Ganancia (dB)
+slider51:1<0.1,18,0.01:log=1>-B4 Q
+slider52:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B4 Pendiente
+slider53:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B4 Canal
+slider54:0<-24,24,0.1>-B4 Dinamica rango (dB)
+slider55:-30<-60,0,0.1>-B4 Dinamica umbral (dB)
+slider56:5<0.1,100,0.1:log=5>-B4 Dinamica ataque (ms)
+slider57:120<5,1000,1:log=100>-B4 Dinamica release (ms)
+slider58:0<0,1,1{Interna,Sidechain 3/4}>-B4 Dinamica fuente
+slider59:0<0,2,1{Sin usar,Encendida,Apagada}>-B5 Estado
+slider60:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B5 Tipo
+slider61:1000<20,20000,0.1:log=1000>-B5 Frecuencia (Hz)
+slider62:0<-30,30,0.1>-B5 Ganancia (dB)
+slider63:1<0.1,18,0.01:log=1>-B5 Q
+slider64:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B5 Pendiente
+slider65:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B5 Canal
+slider66:0<-24,24,0.1>-B5 Dinamica rango (dB)
+slider67:-30<-60,0,0.1>-B5 Dinamica umbral (dB)
+slider68:5<0.1,100,0.1:log=5>-B5 Dinamica ataque (ms)
+slider69:120<5,1000,1:log=100>-B5 Dinamica release (ms)
+slider70:0<0,1,1{Interna,Sidechain 3/4}>-B5 Dinamica fuente
+slider71:0<0,2,1{Sin usar,Encendida,Apagada}>-B6 Estado
+slider72:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B6 Tipo
+slider73:1000<20,20000,0.1:log=1000>-B6 Frecuencia (Hz)
+slider74:0<-30,30,0.1>-B6 Ganancia (dB)
+slider75:1<0.1,18,0.01:log=1>-B6 Q
+slider76:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B6 Pendiente
+slider77:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B6 Canal
+slider78:0<-24,24,0.1>-B6 Dinamica rango (dB)
+slider79:-30<-60,0,0.1>-B6 Dinamica umbral (dB)
+slider80:5<0.1,100,0.1:log=5>-B6 Dinamica ataque (ms)
+slider81:120<5,1000,1:log=100>-B6 Dinamica release (ms)
+slider82:0<0,1,1{Interna,Sidechain 3/4}>-B6 Dinamica fuente
+slider83:0<0,2,1{Sin usar,Encendida,Apagada}>-B7 Estado
+slider84:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B7 Tipo
+slider85:1000<20,20000,0.1:log=1000>-B7 Frecuencia (Hz)
+slider86:0<-30,30,0.1>-B7 Ganancia (dB)
+slider87:1<0.1,18,0.01:log=1>-B7 Q
+slider88:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B7 Pendiente
+slider89:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B7 Canal
+slider90:0<-24,24,0.1>-B7 Dinamica rango (dB)
+slider91:-30<-60,0,0.1>-B7 Dinamica umbral (dB)
+slider92:5<0.1,100,0.1:log=5>-B7 Dinamica ataque (ms)
+slider93:120<5,1000,1:log=100>-B7 Dinamica release (ms)
+slider94:0<0,1,1{Interna,Sidechain 3/4}>-B7 Dinamica fuente
+slider95:0<0,2,1{Sin usar,Encendida,Apagada}>-B8 Estado
+slider96:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B8 Tipo
+slider97:1000<20,20000,0.1:log=1000>-B8 Frecuencia (Hz)
+slider98:0<-30,30,0.1>-B8 Ganancia (dB)
+slider99:1<0.1,18,0.01:log=1>-B8 Q
+slider100:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B8 Pendiente
+slider101:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B8 Canal
+slider102:0<-24,24,0.1>-B8 Dinamica rango (dB)
+slider103:-30<-60,0,0.1>-B8 Dinamica umbral (dB)
+slider104:5<0.1,100,0.1:log=5>-B8 Dinamica ataque (ms)
+slider105:120<5,1000,1:log=100>-B8 Dinamica release (ms)
+slider106:0<0,1,1{Interna,Sidechain 3/4}>-B8 Dinamica fuente
+slider107:0<0,2,1{Sin usar,Encendida,Apagada}>-B9 Estado
+slider108:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B9 Tipo
+slider109:1000<20,20000,0.1:log=1000>-B9 Frecuencia (Hz)
+slider110:0<-30,30,0.1>-B9 Ganancia (dB)
+slider111:1<0.1,18,0.01:log=1>-B9 Q
+slider112:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B9 Pendiente
+slider113:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B9 Canal
+slider114:0<-24,24,0.1>-B9 Dinamica rango (dB)
+slider115:-30<-60,0,0.1>-B9 Dinamica umbral (dB)
+slider116:5<0.1,100,0.1:log=5>-B9 Dinamica ataque (ms)
+slider117:120<5,1000,1:log=100>-B9 Dinamica release (ms)
+slider118:0<0,1,1{Interna,Sidechain 3/4}>-B9 Dinamica fuente
+slider119:0<0,2,1{Sin usar,Encendida,Apagada}>-B10 Estado
+slider120:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B10 Tipo
+slider121:1000<20,20000,0.1:log=1000>-B10 Frecuencia (Hz)
+slider122:0<-30,30,0.1>-B10 Ganancia (dB)
+slider123:1<0.1,18,0.01:log=1>-B10 Q
+slider124:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B10 Pendiente
+slider125:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B10 Canal
+slider126:0<-24,24,0.1>-B10 Dinamica rango (dB)
+slider127:-30<-60,0,0.1>-B10 Dinamica umbral (dB)
+slider128:5<0.1,100,0.1:log=5>-B10 Dinamica ataque (ms)
+slider129:120<5,1000,1:log=100>-B10 Dinamica release (ms)
+slider130:0<0,1,1{Interna,Sidechain 3/4}>-B10 Dinamica fuente
+slider131:0<0,2,1{Sin usar,Encendida,Apagada}>-B11 Estado
+slider132:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B11 Tipo
+slider133:1000<20,20000,0.1:log=1000>-B11 Frecuencia (Hz)
+slider134:0<-30,30,0.1>-B11 Ganancia (dB)
+slider135:1<0.1,18,0.01:log=1>-B11 Q
+slider136:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B11 Pendiente
+slider137:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B11 Canal
+slider138:0<-24,24,0.1>-B11 Dinamica rango (dB)
+slider139:-30<-60,0,0.1>-B11 Dinamica umbral (dB)
+slider140:5<0.1,100,0.1:log=5>-B11 Dinamica ataque (ms)
+slider141:120<5,1000,1:log=100>-B11 Dinamica release (ms)
+slider142:0<0,1,1{Interna,Sidechain 3/4}>-B11 Dinamica fuente
+slider143:0<0,2,1{Sin usar,Encendida,Apagada}>-B12 Estado
+slider144:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B12 Tipo
+slider145:1000<20,20000,0.1:log=1000>-B12 Frecuencia (Hz)
+slider146:0<-30,30,0.1>-B12 Ganancia (dB)
+slider147:1<0.1,18,0.01:log=1>-B12 Q
+slider148:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B12 Pendiente
+slider149:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B12 Canal
+slider150:0<-24,24,0.1>-B12 Dinamica rango (dB)
+slider151:-30<-60,0,0.1>-B12 Dinamica umbral (dB)
+slider152:5<0.1,100,0.1:log=5>-B12 Dinamica ataque (ms)
+slider153:120<5,1000,1:log=100>-B12 Dinamica release (ms)
+slider154:0<0,1,1{Interna,Sidechain 3/4}>-B12 Dinamica fuente
+slider155:0<0,2,1{Sin usar,Encendida,Apagada}>-B13 Estado
+slider156:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B13 Tipo
+slider157:1000<20,20000,0.1:log=1000>-B13 Frecuencia (Hz)
+slider158:0<-30,30,0.1>-B13 Ganancia (dB)
+slider159:1<0.1,18,0.01:log=1>-B13 Q
+slider160:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B13 Pendiente
+slider161:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B13 Canal
+slider162:0<-24,24,0.1>-B13 Dinamica rango (dB)
+slider163:-30<-60,0,0.1>-B13 Dinamica umbral (dB)
+slider164:5<0.1,100,0.1:log=5>-B13 Dinamica ataque (ms)
+slider165:120<5,1000,1:log=100>-B13 Dinamica release (ms)
+slider166:0<0,1,1{Interna,Sidechain 3/4}>-B13 Dinamica fuente
+slider167:0<0,2,1{Sin usar,Encendida,Apagada}>-B14 Estado
+slider168:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B14 Tipo
+slider169:1000<20,20000,0.1:log=1000>-B14 Frecuencia (Hz)
+slider170:0<-30,30,0.1>-B14 Ganancia (dB)
+slider171:1<0.1,18,0.01:log=1>-B14 Q
+slider172:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B14 Pendiente
+slider173:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B14 Canal
+slider174:0<-24,24,0.1>-B14 Dinamica rango (dB)
+slider175:-30<-60,0,0.1>-B14 Dinamica umbral (dB)
+slider176:5<0.1,100,0.1:log=5>-B14 Dinamica ataque (ms)
+slider177:120<5,1000,1:log=100>-B14 Dinamica release (ms)
+slider178:0<0,1,1{Interna,Sidechain 3/4}>-B14 Dinamica fuente
+slider179:0<0,2,1{Sin usar,Encendida,Apagada}>-B15 Estado
+slider180:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B15 Tipo
+slider181:1000<20,20000,0.1:log=1000>-B15 Frecuencia (Hz)
+slider182:0<-30,30,0.1>-B15 Ganancia (dB)
+slider183:1<0.1,18,0.01:log=1>-B15 Q
+slider184:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B15 Pendiente
+slider185:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B15 Canal
+slider186:0<-24,24,0.1>-B15 Dinamica rango (dB)
+slider187:-30<-60,0,0.1>-B15 Dinamica umbral (dB)
+slider188:5<0.1,100,0.1:log=5>-B15 Dinamica ataque (ms)
+slider189:120<5,1000,1:log=100>-B15 Dinamica release (ms)
+slider190:0<0,1,1{Interna,Sidechain 3/4}>-B15 Dinamica fuente
+slider191:0<0,2,1{Sin usar,Encendida,Apagada}>-B16 Estado
+slider192:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B16 Tipo
+slider193:1000<20,20000,0.1:log=1000>-B16 Frecuencia (Hz)
+slider194:0<-30,30,0.1>-B16 Ganancia (dB)
+slider195:1<0.1,18,0.01:log=1>-B16 Q
+slider196:3<0,5,1{6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,36 dB/oct,48 dB/oct}>-B16 Pendiente
+slider197:0<0,4,1{Estereo,Centro (Mid),Lados (Side),Izquierda,Derecha}>-B16 Canal
+slider198:0<-24,24,0.1>-B16 Dinamica rango (dB)
+slider199:-30<-60,0,0.1>-B16 Dinamica umbral (dB)
+slider200:5<0.1,100,0.1:log=5>-B16 Dinamica ataque (ms)
+slider201:120<5,1000,1:log=100>-B16 Dinamica release (ms)
+slider202:0<0,1,1{Interna,Sidechain 3/4}>-B16 Dinamica fuente
+
+in_pin:Entrada oL
+in_pin:Entrada oR
+in_pin:Sidechain oL
+in_pin:Sidechain oR
+out_pin:Salida oL
+out_pin:Salida oR
+
+options:gfx_hz=60 no_meter
+
+@init
+ext_noinit = 1;
+gfx_ext_retina = 1;
+
+NB = 16;          // bandas
+NP = 12;          // parametros por banda
+P0 = 11;          // slider de la primera banda
+BSZ = 128;        // memoria por banda
+
+bandmem  = 0;       // NB*BSZ = 2048
+listmem  = 2100;    // bandas activas en orden
+solop    = 2200;    // etapa del solo (8)
+solost   = 2210;    // estados del solo (4)
+anaPost  = 4096;    ANAN = 8192;
+anaPre   = 16384;
+fftbuf   = 65536;   FFTN = 4096;
+specPost = 131072;  // 2048 bins suavizados (dB)
+specPre  = 135168;
+hitmem   = 140000;  // rectangulos clicables (5 valores c/u)
+totMain  = 150000;  // curva total por columna
+totSide  = 154000;
+colT     = 158000;  // tan(pi f / fs) por columna
+colF     = 162000;  // frecuencia por columna
+
+// ---------------------------------------------------------------- utilidades
+function clamp(x, a, b) ( x < a ? a : x > b ? b : x );
+function db2a(x) ( 10 ^ (x / 20) );
+function nlog(v, a, b) ( log(v / a) / log(b / a) );
+function dlog(n, a, b) ( a * (b / a) ^ n );
+function nlin(v, a, b) ( (v - a) / (b - a) );
+function dlin(n, a, b) ( a + (b - a) * n );
+function r10(x) ( floor(x * 10 + 0.5) / 10 );
+function r100(x) ( floor(x * 100 + 0.5) / 100 );
+
+function slider_set(i, v) (
+  (i < 104 ? ((i < 54 ? ((i < 29 ? ((i < 17 ? ((i < 11 ? ((i < 4 ? ((i < 2 ? (slider1 = v) : ((i < 3 ? (slider2 = v) : (slider3 = v))))) : ((i < 5 ? (slider4 = v) : ((i < 6 ? (slider5 = v) : (slider6 = v))))))) : ((i < 14 ? ((i < 12 ? (slider11 = v) : ((i < 13 ? (slider12 = v) : (slider13 = v))))) : ((i < 15 ? (slider14 = v) : ((i < 16 ? (slider15 = v) : (slider16 = v))))))))) : ((i < 23 ? ((i < 20 ? ((i < 18 ? (slider17 = v) : ((i < 19 ? (slider18 = v) : (slider19 = v))))) : ((i < 21 ? (slider20 = v) : ((i < 22 ? (slider21 = v) : (slider22 = v))))))) : ((i < 26 ? ((i < 24 ? (slider23 = v) : ((i < 25 ? (slider24 = v) : (slider25 = v))))) : ((i < 27 ? (slider26 = v) : ((i < 28 ? (slider27 = v) : (slider28 = v))))))))))) : ((i < 41 ? ((i < 35 ? ((i < 32 ? ((i < 30 ? (slider29 = v) : ((i < 31 ? (slider30 = v) : (slider31 = v))))) : ((i < 33 ? (slider32 = v) : ((i < 34 ? (slider33 = v) : (slider34 = v))))))) : ((i < 38 ? ((i < 36 ? (slider35 = v) : ((i < 37 ? (slider36 = v) : (slider37 = v))))) : ((i < 39 ? (slider38 = v) : ((i < 40 ? (slider39 = v) : (slider40 = v))))))))) : ((i < 47 ? ((i < 44 ? ((i < 42 ? (slider41 = v) : ((i < 43 ? (slider42 = v) : (slider43 = v))))) : ((i < 45 ? (slider44 = v) : ((i < 46 ? (slider45 = v) : (slider46 = v))))))) : ((i < 50 ? ((i < 48 ? (slider47 = v) : ((i < 49 ? (slider48 = v) : (slider49 = v))))) : ((i < 52 ? ((i < 51 ? (slider50 = v) : (slider51 = v))) : ((i < 53 ? (slider52 = v) : (slider53 = v))))))))))))) : ((i < 79 ? ((i < 66 ? ((i < 60 ? ((i < 57 ? ((i < 55 ? (slider54 = v) : ((i < 56 ? (slider55 = v) : (slider56 = v))))) : ((i < 58 ? (slider57 = v) : ((i < 59 ? (slider58 = v) : (slider59 = v))))))) : ((i < 63 ? ((i < 61 ? (slider60 = v) : ((i < 62 ? (slider61 = v) : (slider62 = v))))) : ((i < 64 ? (slider63 = v) : ((i < 65 ? (slider64 = v) : (slider65 = v))))))))) : ((i < 72 ? ((i < 69 ? ((i < 67 ? (slider66 = v) : ((i < 68 ? (slider67 = v) : (slider68 = v))))) : ((i < 70 ? (slider69 = v) : ((i < 71 ? (slider70 = v) : (slider71 = v))))))) : ((i < 75 ? ((i < 73 ? (slider72 = v) : ((i < 74 ? (slider73 = v) : (slider74 = v))))) : ((i < 77 ? ((i < 76 ? (slider75 = v) : (slider76 = v))) : ((i < 78 ? (slider77 = v) : (slider78 = v))))))))))) : ((i < 91 ? ((i < 85 ? ((i < 82 ? ((i < 80 ? (slider79 = v) : ((i < 81 ? (slider80 = v) : (slider81 = v))))) : ((i < 83 ? (slider82 = v) : ((i < 84 ? (slider83 = v) : (slider84 = v))))))) : ((i < 88 ? ((i < 86 ? (slider85 = v) : ((i < 87 ? (slider86 = v) : (slider87 = v))))) : ((i < 89 ? (slider88 = v) : ((i < 90 ? (slider89 = v) : (slider90 = v))))))))) : ((i < 97 ? ((i < 94 ? ((i < 92 ? (slider91 = v) : ((i < 93 ? (slider92 = v) : (slider93 = v))))) : ((i < 95 ? (slider94 = v) : ((i < 96 ? (slider95 = v) : (slider96 = v))))))) : ((i < 100 ? ((i < 98 ? (slider97 = v) : ((i < 99 ? (slider98 = v) : (slider99 = v))))) : ((i < 102 ? ((i < 101 ? (slider100 = v) : (slider101 = v))) : ((i < 103 ? (slider102 = v) : (slider103 = v))))))))))))))) : ((i < 153 ? ((i < 128 ? ((i < 116 ? ((i < 110 ? ((i < 107 ? ((i < 105 ? (slider104 = v) : ((i < 106 ? (slider105 = v) : (slider106 = v))))) : ((i < 108 ? (slider107 = v) : ((i < 109 ? (slider108 = v) : (slider109 = v))))))) : ((i < 113 ? ((i < 111 ? (slider110 = v) : ((i < 112 ? (slider111 = v) : (slider112 = v))))) : ((i < 114 ? (slider113 = v) : ((i < 115 ? (slider114 = v) : (slider115 = v))))))))) : ((i < 122 ? ((i < 119 ? ((i < 117 ? (slider116 = v) : ((i < 118 ? (slider117 = v) : (slider118 = v))))) : ((i < 120 ? (slider119 = v) : ((i < 121 ? (slider120 = v) : (slider121 = v))))))) : ((i < 125 ? ((i < 123 ? (slider122 = v) : ((i < 124 ? (slider123 = v) : (slider124 = v))))) : ((i < 126 ? (slider125 = v) : ((i < 127 ? (slider126 = v) : (slider127 = v))))))))))) : ((i < 140 ? ((i < 134 ? ((i < 131 ? ((i < 129 ? (slider128 = v) : ((i < 130 ? (slider129 = v) : (slider130 = v))))) : ((i < 132 ? (slider131 = v) : ((i < 133 ? (slider132 = v) : (slider133 = v))))))) : ((i < 137 ? ((i < 135 ? (slider134 = v) : ((i < 136 ? (slider135 = v) : (slider136 = v))))) : ((i < 138 ? (slider137 = v) : ((i < 139 ? (slider138 = v) : (slider139 = v))))))))) : ((i < 146 ? ((i < 143 ? ((i < 141 ? (slider140 = v) : ((i < 142 ? (slider141 = v) : (slider142 = v))))) : ((i < 144 ? (slider143 = v) : ((i < 145 ? (slider144 = v) : (slider145 = v))))))) : ((i < 149 ? ((i < 147 ? (slider146 = v) : ((i < 148 ? (slider147 = v) : (slider148 = v))))) : ((i < 151 ? ((i < 150 ? (slider149 = v) : (slider150 = v))) : ((i < 152 ? (slider151 = v) : (slider152 = v))))))))))))) : ((i < 178 ? ((i < 165 ? ((i < 159 ? ((i < 156 ? ((i < 154 ? (slider153 = v) : ((i < 155 ? (slider154 = v) : (slider155 = v))))) : ((i < 157 ? (slider156 = v) : ((i < 158 ? (slider157 = v) : (slider158 = v))))))) : ((i < 162 ? ((i < 160 ? (slider159 = v) : ((i < 161 ? (slider160 = v) : (slider161 = v))))) : ((i < 163 ? (slider162 = v) : ((i < 164 ? (slider163 = v) : (slider164 = v))))))))) : ((i < 171 ? ((i < 168 ? ((i < 166 ? (slider165 = v) : ((i < 167 ? (slider166 = v) : (slider167 = v))))) : ((i < 169 ? (slider168 = v) : ((i < 170 ? (slider169 = v) : (slider170 = v))))))) : ((i < 174 ? ((i < 172 ? (slider171 = v) : ((i < 173 ? (slider172 = v) : (slider173 = v))))) : ((i < 176 ? ((i < 175 ? (slider174 = v) : (slider175 = v))) : ((i < 177 ? (slider176 = v) : (slider177 = v))))))))))) : ((i < 190 ? ((i < 184 ? ((i < 181 ? ((i < 179 ? (slider178 = v) : ((i < 180 ? (slider179 = v) : (slider180 = v))))) : ((i < 182 ? (slider181 = v) : ((i < 183 ? (slider182 = v) : (slider183 = v))))))) : ((i < 187 ? ((i < 185 ? (slider184 = v) : ((i < 186 ? (slider185 = v) : (slider186 = v))))) : ((i < 188 ? (slider187 = v) : ((i < 189 ? (slider188 = v) : (slider189 = v))))))))) : ((i < 196 ? ((i < 193 ? ((i < 191 ? (slider190 = v) : ((i < 192 ? (slider191 = v) : (slider192 = v))))) : ((i < 194 ? (slider193 = v) : ((i < 195 ? (slider194 = v) : (slider195 = v))))))) : ((i < 199 ? ((i < 197 ? (slider196 = v) : ((i < 198 ? (slider197 = v) : (slider198 = v))))) : ((i < 201 ? ((i < 200 ? (slider199 = v) : (slider200 = v))) : ((i < 202 ? (slider201 = v) : (slider202 = v))))))))))))))));
+);
+function slider_aut(i) (
+  (i < 104 ? ((i < 54 ? ((i < 29 ? ((i < 17 ? ((i < 11 ? ((i < 4 ? ((i < 2 ? (slider_automate(slider1)) : ((i < 3 ? (slider_automate(slider2)) : (slider_automate(slider3)))))) : ((i < 5 ? (slider_automate(slider4)) : ((i < 6 ? (slider_automate(slider5)) : (slider_automate(slider6)))))))) : ((i < 14 ? ((i < 12 ? (slider_automate(slider11)) : ((i < 13 ? (slider_automate(slider12)) : (slider_automate(slider13)))))) : ((i < 15 ? (slider_automate(slider14)) : ((i < 16 ? (slider_automate(slider15)) : (slider_automate(slider16)))))))))) : ((i < 23 ? ((i < 20 ? ((i < 18 ? (slider_automate(slider17)) : ((i < 19 ? (slider_automate(slider18)) : (slider_automate(slider19)))))) : ((i < 21 ? (slider_automate(slider20)) : ((i < 22 ? (slider_automate(slider21)) : (slider_automate(slider22)))))))) : ((i < 26 ? ((i < 24 ? (slider_automate(slider23)) : ((i < 25 ? (slider_automate(slider24)) : (slider_automate(slider25)))))) : ((i < 27 ? (slider_automate(slider26)) : ((i < 28 ? (slider_automate(slider27)) : (slider_automate(slider28)))))))))))) : ((i < 41 ? ((i < 35 ? ((i < 32 ? ((i < 30 ? (slider_automate(slider29)) : ((i < 31 ? (slider_automate(slider30)) : (slider_automate(slider31)))))) : ((i < 33 ? (slider_automate(slider32)) : ((i < 34 ? (slider_automate(slider33)) : (slider_automate(slider34)))))))) : ((i < 38 ? ((i < 36 ? (slider_automate(slider35)) : ((i < 37 ? (slider_automate(slider36)) : (slider_automate(slider37)))))) : ((i < 39 ? (slider_automate(slider38)) : ((i < 40 ? (slider_automate(slider39)) : (slider_automate(slider40)))))))))) : ((i < 47 ? ((i < 44 ? ((i < 42 ? (slider_automate(slider41)) : ((i < 43 ? (slider_automate(slider42)) : (slider_automate(slider43)))))) : ((i < 45 ? (slider_automate(slider44)) : ((i < 46 ? (slider_automate(slider45)) : (slider_automate(slider46)))))))) : ((i < 50 ? ((i < 48 ? (slider_automate(slider47)) : ((i < 49 ? (slider_automate(slider48)) : (slider_automate(slider49)))))) : ((i < 52 ? ((i < 51 ? (slider_automate(slider50)) : (slider_automate(slider51)))) : ((i < 53 ? (slider_automate(slider52)) : (slider_automate(slider53)))))))))))))) : ((i < 79 ? ((i < 66 ? ((i < 60 ? ((i < 57 ? ((i < 55 ? (slider_automate(slider54)) : ((i < 56 ? (slider_automate(slider55)) : (slider_automate(slider56)))))) : ((i < 58 ? (slider_automate(slider57)) : ((i < 59 ? (slider_automate(slider58)) : (slider_automate(slider59)))))))) : ((i < 63 ? ((i < 61 ? (slider_automate(slider60)) : ((i < 62 ? (slider_automate(slider61)) : (slider_automate(slider62)))))) : ((i < 64 ? (slider_automate(slider63)) : ((i < 65 ? (slider_automate(slider64)) : (slider_automate(slider65)))))))))) : ((i < 72 ? ((i < 69 ? ((i < 67 ? (slider_automate(slider66)) : ((i < 68 ? (slider_automate(slider67)) : (slider_automate(slider68)))))) : ((i < 70 ? (slider_automate(slider69)) : ((i < 71 ? (slider_automate(slider70)) : (slider_automate(slider71)))))))) : ((i < 75 ? ((i < 73 ? (slider_automate(slider72)) : ((i < 74 ? (slider_automate(slider73)) : (slider_automate(slider74)))))) : ((i < 77 ? ((i < 76 ? (slider_automate(slider75)) : (slider_automate(slider76)))) : ((i < 78 ? (slider_automate(slider77)) : (slider_automate(slider78)))))))))))) : ((i < 91 ? ((i < 85 ? ((i < 82 ? ((i < 80 ? (slider_automate(slider79)) : ((i < 81 ? (slider_automate(slider80)) : (slider_automate(slider81)))))) : ((i < 83 ? (slider_automate(slider82)) : ((i < 84 ? (slider_automate(slider83)) : (slider_automate(slider84)))))))) : ((i < 88 ? ((i < 86 ? (slider_automate(slider85)) : ((i < 87 ? (slider_automate(slider86)) : (slider_automate(slider87)))))) : ((i < 89 ? (slider_automate(slider88)) : ((i < 90 ? (slider_automate(slider89)) : (slider_automate(slider90)))))))))) : ((i < 97 ? ((i < 94 ? ((i < 92 ? (slider_automate(slider91)) : ((i < 93 ? (slider_automate(slider92)) : (slider_automate(slider93)))))) : ((i < 95 ? (slider_automate(slider94)) : ((i < 96 ? (slider_automate(slider95)) : (slider_automate(slider96)))))))) : ((i < 100 ? ((i < 98 ? (slider_automate(slider97)) : ((i < 99 ? (slider_automate(slider98)) : (slider_automate(slider99)))))) : ((i < 102 ? ((i < 101 ? (slider_automate(slider100)) : (slider_automate(slider101)))) : ((i < 103 ? (slider_automate(slider102)) : (slider_automate(slider103)))))))))))))))) : ((i < 153 ? ((i < 128 ? ((i < 116 ? ((i < 110 ? ((i < 107 ? ((i < 105 ? (slider_automate(slider104)) : ((i < 106 ? (slider_automate(slider105)) : (slider_automate(slider106)))))) : ((i < 108 ? (slider_automate(slider107)) : ((i < 109 ? (slider_automate(slider108)) : (slider_automate(slider109)))))))) : ((i < 113 ? ((i < 111 ? (slider_automate(slider110)) : ((i < 112 ? (slider_automate(slider111)) : (slider_automate(slider112)))))) : ((i < 114 ? (slider_automate(slider113)) : ((i < 115 ? (slider_automate(slider114)) : (slider_automate(slider115)))))))))) : ((i < 122 ? ((i < 119 ? ((i < 117 ? (slider_automate(slider116)) : ((i < 118 ? (slider_automate(slider117)) : (slider_automate(slider118)))))) : ((i < 120 ? (slider_automate(slider119)) : ((i < 121 ? (slider_automate(slider120)) : (slider_automate(slider121)))))))) : ((i < 125 ? ((i < 123 ? (slider_automate(slider122)) : ((i < 124 ? (slider_automate(slider123)) : (slider_automate(slider124)))))) : ((i < 126 ? (slider_automate(slider125)) : ((i < 127 ? (slider_automate(slider126)) : (slider_automate(slider127)))))))))))) : ((i < 140 ? ((i < 134 ? ((i < 131 ? ((i < 129 ? (slider_automate(slider128)) : ((i < 130 ? (slider_automate(slider129)) : (slider_automate(slider130)))))) : ((i < 132 ? (slider_automate(slider131)) : ((i < 133 ? (slider_automate(slider132)) : (slider_automate(slider133)))))))) : ((i < 137 ? ((i < 135 ? (slider_automate(slider134)) : ((i < 136 ? (slider_automate(slider135)) : (slider_automate(slider136)))))) : ((i < 138 ? (slider_automate(slider137)) : ((i < 139 ? (slider_automate(slider138)) : (slider_automate(slider139)))))))))) : ((i < 146 ? ((i < 143 ? ((i < 141 ? (slider_automate(slider140)) : ((i < 142 ? (slider_automate(slider141)) : (slider_automate(slider142)))))) : ((i < 144 ? (slider_automate(slider143)) : ((i < 145 ? (slider_automate(slider144)) : (slider_automate(slider145)))))))) : ((i < 149 ? ((i < 147 ? (slider_automate(slider146)) : ((i < 148 ? (slider_automate(slider147)) : (slider_automate(slider148)))))) : ((i < 151 ? ((i < 150 ? (slider_automate(slider149)) : (slider_automate(slider150)))) : ((i < 152 ? (slider_automate(slider151)) : (slider_automate(slider152)))))))))))))) : ((i < 178 ? ((i < 165 ? ((i < 159 ? ((i < 156 ? ((i < 154 ? (slider_automate(slider153)) : ((i < 155 ? (slider_automate(slider154)) : (slider_automate(slider155)))))) : ((i < 157 ? (slider_automate(slider156)) : ((i < 158 ? (slider_automate(slider157)) : (slider_automate(slider158)))))))) : ((i < 162 ? ((i < 160 ? (slider_automate(slider159)) : ((i < 161 ? (slider_automate(slider160)) : (slider_automate(slider161)))))) : ((i < 163 ? (slider_automate(slider162)) : ((i < 164 ? (slider_automate(slider163)) : (slider_automate(slider164)))))))))) : ((i < 171 ? ((i < 168 ? ((i < 166 ? (slider_automate(slider165)) : ((i < 167 ? (slider_automate(slider166)) : (slider_automate(slider167)))))) : ((i < 169 ? (slider_automate(slider168)) : ((i < 170 ? (slider_automate(slider169)) : (slider_automate(slider170)))))))) : ((i < 174 ? ((i < 172 ? (slider_automate(slider171)) : ((i < 173 ? (slider_automate(slider172)) : (slider_automate(slider173)))))) : ((i < 176 ? ((i < 175 ? (slider_automate(slider174)) : (slider_automate(slider175)))) : ((i < 177 ? (slider_automate(slider176)) : (slider_automate(slider177)))))))))))) : ((i < 190 ? ((i < 184 ? ((i < 181 ? ((i < 179 ? (slider_automate(slider178)) : ((i < 180 ? (slider_automate(slider179)) : (slider_automate(slider180)))))) : ((i < 182 ? (slider_automate(slider181)) : ((i < 183 ? (slider_automate(slider182)) : (slider_automate(slider183)))))))) : ((i < 187 ? ((i < 185 ? (slider_automate(slider184)) : ((i < 186 ? (slider_automate(slider185)) : (slider_automate(slider186)))))) : ((i < 188 ? (slider_automate(slider187)) : ((i < 189 ? (slider_automate(slider188)) : (slider_automate(slider189)))))))))) : ((i < 196 ? ((i < 193 ? ((i < 191 ? (slider_automate(slider190)) : ((i < 192 ? (slider_automate(slider191)) : (slider_automate(slider192)))))) : ((i < 194 ? (slider_automate(slider193)) : ((i < 195 ? (slider_automate(slider194)) : (slider_automate(slider195)))))))) : ((i < 199 ? ((i < 197 ? (slider_automate(slider196)) : ((i < 198 ? (slider_automate(slider197)) : (slider_automate(slider198)))))) : ((i < 201 ? ((i < 200 ? (slider_automate(slider199)) : (slider_automate(slider200)))) : ((i < 202 ? (slider_automate(slider201)) : (slider_automate(slider202)))))))))))))))));
+);
+
+
+function par(b, p) ( slider(P0 + b * NP + p) );
+function setpar(b, p, v) local(i) ( i = P0 + b * NP + p; slider_set(i, v); slider_aut(i); );
+
+// tipos
+// 0 Campana, 1 Shelf grave, 2 Shelf agudo, 3 Corte grave (HPF), 4 Corte agudo (LPF), 5 Notch, 6 Pasa banda
+function has_gain(t) ( t <= 2 );
+function is_cut(t) ( t == 3 || t == 4 );
+function can_dyn(t) ( t <= 2 );
+
+// ---------------------------------------------------------------- filtros (SVF trapezoidal, Simper)
+// etapa: [ord, g, k, m0, m1, m2, a1, a2]
+//@@COEFFS_BEGIN
+function set_stage(p, ord, g, k, m0, m1, m2)
+(
+  p[0] = ord; p[1] = g; p[2] = k; p[3] = m0; p[4] = m1; p[5] = m2;
+  ord == 2 ? ( p[6] = 1 / (1 + g * (g + k)); p[7] = g * p[6]; )
+           : ( p[6] = g / (1 + g); p[7] = 0; );
+);
+function cut1(p, tn, hp) ( set_stage(p, 1, tn, 0, hp ? 1 : 0, 0, hp ? -1 : 1); );
+function cut2(p, tn, q, hp) ( set_stage(p, 2, tn, 1 / q, hp ? 1 : 0, hp ? -1 / q : 0, hp ? -1 : 1); );
+
+// escribe las etapas en dst (32 valores) y su cantidad en dst[32]
+function calc_coeffs(dst, ty, f, gdb, q, sl) local(amp, tn, n, qr, hp)
+(
+  f = clamp(f, 10, srate * 0.475);
+  q = clamp(q, 0.05, 40);
+  tn = tan($pi * f / srate);
+  amp = 10 ^ (gdb / 40);
+  n = 1;
+  ty == 0 ? set_stage(dst, 2, tn, 1 / (q * amp), 1, (amp * amp - 1) / (q * amp), 0) :
+  ty == 1 ? set_stage(dst, 2, tn / sqrt(amp), 1 / q, 1, (amp - 1) / q, amp * amp - 1) :
+  ty == 2 ? set_stage(dst, 2, tn * sqrt(amp), 1 / q, amp * amp, (1 - amp) * amp / q, 1 - amp * amp) :
+  ty == 5 ? set_stage(dst, 2, tn, 1 / q, 1, -1 / q, 0) :
+  ty == 6 ? set_stage(dst, 2, tn, 1 / q, 0, 1 / q, 0) :
+  (
+    qr = q / 0.70710678;
+    hp = ty == 3;
+    sl == 0 ? ( cut1(dst, tn, hp); ) :
+    sl == 1 ? ( cut2(dst, tn, 0.70710678 * qr, hp); ) :
+    sl == 2 ? ( n = 2; cut1(dst, tn, hp); cut2(dst + 8, tn, 1.0 * qr, hp); ) :
+    sl == 3 ? ( n = 2; cut2(dst, tn, 0.54119610, hp); cut2(dst + 8, tn, 1.30656296 * qr, hp); ) :
+    sl == 4 ? ( n = 3; cut2(dst, tn, 0.51763809, hp); cut2(dst + 8, tn, 0.70710678, hp); cut2(dst + 16, tn, 1.93185165 * qr, hp); ) :
+              ( n = 4; cut2(dst, tn, 0.50979558, hp); cut2(dst + 8, tn, 0.60134489, hp); cut2(dst + 16, tn, 0.89997622, hp); cut2(dst + 24, tn, 2.56291545 * qr, hp); );
+  );
+  dst[32] = n;
+);
+
+//@@COEFFS_BEGIN
+function set_stage_ui(p, ord, g, k, m0, m1, m2)
+(
+  p[0] = ord; p[1] = g; p[2] = k; p[3] = m0; p[4] = m1; p[5] = m2;
+  ord == 2 ? ( p[6] = 1 / (1 + g * (g + k)); p[7] = g * p[6]; )
+           : ( p[6] = g / (1 + g); p[7] = 0; );
+);
+function cut1_ui(p, tn, hp) ( set_stage_ui(p, 1, tn, 0, hp ? 1 : 0, 0, hp ? -1 : 1); );
+function cut2_ui(p, tn, q, hp) ( set_stage_ui(p, 2, tn, 1 / q, hp ? 1 : 0, hp ? -1 / q : 0, hp ? -1 : 1); );
+
+// escribe las etapas en dst (32 valores) y su cantidad en dst[32]
+function calc_coeffs_ui(dst, ty, f, gdb, q, sl) local(amp, tn, n, qr, hp)
+(
+  f = clamp(f, 10, srate * 0.475);
+  q = clamp(q, 0.05, 40);
+  tn = tan($pi * f / srate);
+  amp = 10 ^ (gdb / 40);
+  n = 1;
+  ty == 0 ? set_stage_ui(dst, 2, tn, 1 / (q * amp), 1, (amp * amp - 1) / (q * amp), 0) :
+  ty == 1 ? set_stage_ui(dst, 2, tn / sqrt(amp), 1 / q, 1, (amp - 1) / q, amp * amp - 1) :
+  ty == 2 ? set_stage_ui(dst, 2, tn * sqrt(amp), 1 / q, amp * amp, (1 - amp) * amp / q, 1 - amp * amp) :
+  ty == 5 ? set_stage_ui(dst, 2, tn, 1 / q, 1, -1 / q, 0) :
+  ty == 6 ? set_stage_ui(dst, 2, tn, 1 / q, 0, 1 / q, 0) :
+  (
+    qr = q / 0.70710678;
+    hp = ty == 3;
+    sl == 0 ? ( cut1_ui(dst, tn, hp); ) :
+    sl == 1 ? ( cut2_ui(dst, tn, 0.70710678 * qr, hp); ) :
+    sl == 2 ? ( n = 2; cut1_ui(dst, tn, hp); cut2_ui(dst + 8, tn, 1.0 * qr, hp); ) :
+    sl == 3 ? ( n = 2; cut2_ui(dst, tn, 0.54119610, hp); cut2_ui(dst + 8, tn, 1.30656296 * qr, hp); ) :
+    sl == 4 ? ( n = 3; cut2_ui(dst, tn, 0.51763809, hp); cut2_ui(dst + 8, tn, 0.70710678, hp); cut2_ui(dst + 16, tn, 1.93185165 * qr, hp); ) :
+              ( n = 4; cut2_ui(dst, tn, 0.50979558, hp); cut2_ui(dst + 8, tn, 0.60134489, hp); cut2_ui(dst + 16, tn, 0.89997622, hp); cut2_ui(dst + 24, tn, 2.56291545 * qr, hp); );
+  );
+  dst[32] = n;
+);
+
+//@@COEFFS_END
+function svf(x, p, st) local(v1, v2, v3, ic1, ic2)
+(
+  p[0] == 2 ? (
+    ic1 = st[0]; ic2 = st[1];
+    v3 = x - ic2;
+    v1 = p[6] * ic1 + p[7] * v3;
+    v2 = ic2 + p[7] * ic1 + p[1] * p[7] * v3;
+    st[0] = 2 * v1 - ic1; st[1] = 2 * v2 - ic2;
+    p[3] * x + p[4] * v1 + p[5] * v2;
+  ) : (
+    v1 = (x - st[0]) * p[6];
+    v2 = v1 + st[0];
+    st[0] = v2 + v1;
+    p[3] * x + p[5] * v2;
+  );
+);
+
+function run_band(x, p, st) local(j)
+(
+  j = 0;
+  loop(p[32], x = svf(x, p + j * 8, st + j * 2); j += 1; );
+  x;
+);
+
+// |H|^2 de una cadena de etapas en T = tan(pi f / fs)
+function mag2(p, tn) local(j, q, O, re, im, dr, di, r)
+(
+  r = 1; j = 0;
+  loop(p[32],
+    q = p + j * 8; O = tn / q[1];
+    q[0] == 1 ? (
+      re = q[3] + q[5]; im = q[3] * O;
+      r *= (re * re + im * im) / (1 + O * O);
+    ) : (
+      dr = 1 - O * O; di = q[2] * O;
+      re = q[3] * dr + q[5]; im = q[3] * di + q[4] * O;
+      r *= (re * re + im * im) / (dr * dr + di * di + 0.000000000000000000000000000001);
+    );
+    j += 1;
+  );
+  r;
+);
+
+// ---------------------------------------------------------------- estado de bandas
+// B+0..11 params | 12 logf | 13 gain | 14 logq | 15 delta din | 16 env | 17 att | 18 rel
+// 20 forzar | 26 ganancia efectiva | 27 din activa | 28 nivel detector dB
+// 32..64 etapas audio | 66..98 etapas dibujo | 100..115 estados | 116,117 estado det | 118..125 etapa det
+function reset_states(bp) local(i) ( i = 100; loop(18, bp[i] = 0; i += 1; ); bp[16] = 0; bp[15] = 0; );
+
+function calc_det(bp) local(tn, k, t)
+(
+  tn = tan($pi * clamp(exp(bp[12]), 10, srate * 0.475) / srate);
+  t = bp[1];
+  t == 1 ? set_stage(bp + 118, 2, tn, 1.4142, 0, 0, 1) :
+  t == 2 ? set_stage(bp + 118, 2, tn, 1.4142, 1, -1.4142, -1) :
+           ( k = 1 / clamp(exp(bp[14]), 0.3, 40); set_stage(bp + 118, 2, tn, k, 0, k, 0); );
+);
+
+function calc_proc(bp)
+(
+  calc_coeffs(bp + 32, bp[1], exp(bp[12]), bp[13] + bp[15], exp(bp[14]), bp[5]);
+  bp[26] = bp[13] + bp[15];
+  bp[27] ? calc_det(bp);
+);
+
+function snap(bp)
+(
+  bp[12] = log(bp[2]); bp[13] = bp[3]; bp[14] = log(bp[4]); bp[15] = 0;
+  calc_proc(bp);
+);
+
+function calc_autogain() local(i, f, tn, j, bp, tot, acc)
+(
+  acc = 0; i = 0;
+  loop(48,
+    f = 40 * 400 ^ (i / 47);
+    tn = tan($pi * min(f, srate * 0.475) / srate);
+    tot = 1; j = 0;
+    loop(nact,
+      bp = bandmem + listmem[j] * BSZ;
+      bp[6] != 2 ? tot *= mag2(bp + 66, tn);
+      j += 1;
+    );
+    acc += tot; i += 1;
+  );
+  autocomp = clamp(-10 * log10(acc / 48 + 0.000000000001), -24, 24);
+);
+
+function sync_all() local(b, bp, i, ost, oty, osl, och, newst)
+(
+  nact = 0; b = 0;
+  loop(NB,
+    bp = bandmem + b * BSZ;
+    ost = bp[0]; oty = bp[1]; osl = bp[5]; och = bp[6];
+    i = 0; loop(NP, bp[i] = slider(P0 + b * NP + i); i += 1; );
+    newst = bp[0];
+    bp[27] = newst == 1 && bp[7] != 0 && can_dyn(bp[1]);
+    bp[17] = exp(-1 / (max(bp[9], 0.05) * 0.001 * srate));
+    bp[18] = exp(-1 / (max(bp[10], 1) * 0.001 * srate));
+    calc_coeffs_ui(bp + 66, bp[1], bp[2], bp[3], bp[4], bp[5]);
+    newst == 1 ? (
+      (ost != 1 || oty != bp[1] || osl != bp[5] || och != bp[6] || bp[32] == 0) ? bp[19] = 1;
+      bp[20] = 1;
+      listmem[nact] = b; nact += 1;
+    );
+    b += 1;
+  );
+  calc_autogain();
+  solo_b >= 0 ? ( par(solo_b, 0) != 1 ? solo_b = -1; );
+  og_target = db2a(slider1 + (slider2 ? autocomp : 0));
+);
+
+// ---------------------------------------------------------------- tick de control (cada 16 muestras)
+function tick() local(i, bp, t, d, ch, envdb, over, dd, tn, k, sty)
+(
+  i = 0;
+  loop(nact,
+    bp = bandmem + listmem[i] * BSZ;
+    bp[19] ? ( bp[19] = 0; reset_states(bp); snap(bp); );
+    ch = bp[20]; bp[20] = 0;
+    t = log(bp[2]); d = t - bp[12];
+    abs(d) > 0.0005 ? ( bp[12] = abs(d) < 0.003 ? t : bp[12] + d * sm; ch = 1; );
+    t = bp[3]; d = t - bp[13];
+    abs(d) > 0.005 ? ( bp[13] = abs(d) < 0.02 ? t : bp[13] + d * sm; ch = 1; );
+    t = log(bp[4]); d = t - bp[14];
+    abs(d) > 0.0005 ? ( bp[14] = abs(d) < 0.003 ? t : bp[14] + d * sm; ch = 1; );
+    bp[27] ? (
+      envdb = 20 * log10(bp[16] + 0.000000001);
+      bp[28] = envdb;
+      over = envdb - bp[8];
+      dd = over > 0 ? min(abs(bp[7]), over * 0.75) : 0;
+      bp[7] < 0 ? dd = -dd;
+      abs(dd - bp[15]) > 0.02 ? ( bp[15] = dd; ch = 1; );
+    ) : (
+      bp[15] != 0 ? ( bp[15] = 0; ch = 1; );
+      bp[28] = -120;
+    );
+    ch ? calc_proc(bp);
+    i += 1;
+  );
+  og += (og_target - og) * sm;
+  solo_b >= 0 ? (
+    bp = bandmem + solo_b * BSZ;
+    tn = tan($pi * clamp(exp(bp[12]), 10, srate * 0.475) / srate);
+    sty = bp[1];
+    k = (sty == 0 || sty >= 5) ? 1 / clamp(exp(bp[14]), 0.2, 40) : 1.4142;
+    sty == 1 || sty == 3 ? set_stage(solop, 2, tn, k, 0, 0, 1) :
+    sty == 2 || sty == 4 ? set_stage(solop, 2, tn, k, 1, -k, -1) :
+                           set_stage(solop, 2, tn, k, 0, k, 0);
+    solo_ch = bp[6];
+  );
+);
+
+// ---------------------------------------------------------------- presets
+function band_set(b, st, ty, f, g, q, sl, ch)
+(
+  setpar(b, 0, st); setpar(b, 1, ty); setpar(b, 2, f); setpar(b, 3, g); setpar(b, 4, q); setpar(b, 5, sl); setpar(b, 6, ch);
+  setpar(b, 7, 0); setpar(b, 8, -30); setpar(b, 9, 5); setpar(b, 10, 120); setpar(b, 11, 0);
+);
+function band_dyn(b, rg, thr, att, rel, src)
+( setpar(b, 7, rg); setpar(b, 8, thr); setpar(b, 9, att); setpar(b, 10, rel); setpar(b, 11, src); );
+function clear_all() local(b) ( b = 0; loop(NB, par(b, 0) != 0 ? setpar(b, 0, 0); b += 1; ); solo_b = -1; sel = -1; );
+
+NPRESETS = 9;
+function preset_name(n)
+(
+  n == 1 ? "Voz Tonor - Nube baja (cadena exacta)" :
+  n == 2 ? "Voz rap - punto de partida" :
+  n == 3 ? "Voz hablada tipo radio / telefono" :
+  n == 4 ? "De-esser (banda dinamica en las s)" :
+  n == 5 ? "Hueco para la voz (Rhodes o coros; sidechain 3/4)" :
+  n == 6 ? "808 / bajo limpio" :
+  n == 7 ? "Hi-hats y clap sin siseo" :
+  n == 8 ? "Master sutil (Nube baja)" :
+  n == 9 ? "Vacio (sin bandas)" : "";
+);
+
+function load_preset(n)
+(
+  clear_all();
+  n == 1 ? (
+    // cadena de voz de Nube baja (FXChains Voz Tonor 1 + 5) sumada en un solo EQ
+    band_set(0, 1, 3, 80, 0, 0.707, 3, 0);
+    band_set(1, 1, 1, 110, -6, 0.7, 3, 0);
+    band_set(2, 1, 1, 200, -4, 0.7, 3, 0);
+    band_set(3, 1, 0, 250, -1, 0.9, 3, 0);
+    band_set(4, 1, 0, 300, -3, 1.5, 3, 0);
+    band_set(5, 1, 0, 315, -5.5, 1.2, 3, 0);
+    band_set(6, 1, 0, 2500, -3.5, 2.5, 3, 0);
+    band_set(7, 1, 0, 3500, -4.5, 0.8, 3, 0);
+    band_set(8, 1, 0, 4500, 0, 1.5, 3, 0);  band_dyn(8, -6, -32, 1, 80, 0);
+    band_set(9, 1, 0, 7500, 5.5, 1.2, 3, 0);
+    band_set(10, 1, 2, 11000, -4.5, 0.7, 3, 0);
+  ) : n == 2 ? (
+    band_set(0, 1, 3, 85, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 310, -4, 1.2, 3, 0);
+    band_set(2, 1, 0, 3000, 2, 1.0, 3, 0);
+    band_set(3, 1, 0, 6000, 0, 1.6, 3, 0);  band_dyn(3, -6, -32, 1, 80, 0);
+    band_set(4, 1, 2, 10000, 2.5, 0.7, 3, 0);
+  ) : n == 3 ? (
+    band_set(0, 1, 3, 400, 0, 0.707, 3, 0);
+    band_set(1, 1, 4, 3500, 0, 0.707, 3, 0);
+    band_set(2, 1, 0, 1500, 4, 1.0, 3, 0);
+  ) : n == 4 ? (
+    band_set(0, 1, 0, 6000, 0, 1.6, 3, 0);  band_dyn(0, -8, -32, 1, 80, 0);
+  ) : n == 5 ? (
+    band_set(0, 1, 0, 1500, 0, 0.6, 3, 1);  band_dyn(0, -5, -45, 10, 200, 1);
+    band_set(1, 1, 0, 1500, 1.5, 0.6, 3, 2);
+  ) : n == 6 ? (
+    band_set(0, 1, 3, 25, 0, 0.707, 3, 0);
+    band_set(1, 1, 1, 60, 2, 0.7, 3, 0);
+    band_set(2, 1, 0, 95, -5, 1.4, 3, 0);
+  ) : n == 7 ? (
+    band_set(0, 1, 3, 300, 0, 0.707, 1, 0);
+    band_set(1, 1, 2, 11000, -5, 0.7, 3, 0);
+  ) : n == 8 ? (
+    band_set(0, 1, 3, 25, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 250, -0.8, 1.0, 3, 0);
+    band_set(2, 1, 0, 3000, 0.9, 1.0, 3, 0);
+    band_set(3, 1, 2, 10000, 1.4, 0.7, 3, 0);
+  );
+  sync_all();
+);
+
+function free_band() local(b, r) ( r = -1; b = 0; loop(NB, r < 0 && par(b, 0) == 0 ? r = b; b += 1; ); r; );
+
+function add_band(ty, f, g) local(b)
+(
+  b = free_band();
+  b >= 0 ? (
+    band_set(b, 1, ty, r10(f), has_gain(ty) ? r10(g) : 0, ty == 0 ? 1 : ty >= 5 ? 4 : 0.707, 3, 0);
+    sel = b; sync_all();
+  );
+  b;
+);
+
+function dup_band(src) local(b, i)
+(
+  b = free_band();
+  b >= 0 ? (
+    i = 0; loop(NP, setpar(b, i, par(src, i)); i += 1; );
+    setpar(b, 2, min(20000, par(src, 2) * 1.25));
+    sel = b; sync_all();
+  );
+);
+
+function del_band(b) ( b >= 0 ? ( setpar(b, 0, 0); solo_b == b ? solo_b = -1; sel == b ? sel = -1; sync_all(); ); );
+function toggle_band(b) ( b >= 0 ? ( setpar(b, 0, par(b, 0) == 1 ? 2 : 1); sync_all(); ); );
+
+function set_type(b, t) local(q, ot)
+(
+  ot = par(b, 1); q = par(b, 4);
+  setpar(b, 1, t);
+  // ancho por defecto razonable al cambiar de familia
+  (t == 0 && q == 0.707) ? setpar(b, 4, 1);
+  ((t >= 1 && t <= 4) && (q == 1 || ot >= 5)) ? setpar(b, 4, 0.707);
+  (t >= 5 && ot < 5) ? setpar(b, 4, 4);
+  !can_dyn(t) ? setpar(b, 7, 0);
+  sync_all();
+);
+
+sel = -1; solo_b = -1; drag = 0; hit_n = 0; last_lb = 0; last_rb = 0; anawp = 0; pk_out = 0;
+sm = 1 - exp(-16 / (0.025 * srate));
+cnt = 0;
+sync_all();
+og = og_target;
+
+@slider
+slider6 > 0 ? (
+  _pn = floor(slider6 + 0.5); slider6 = 0; slider_automate(slider6);
+  load_preset(_pn);
+) : sync_all();
+
+@block
+sm = 1 - exp(-16 / (0.025 * srate));
+
+@sample
+inL = spl0; inR = spl1;
+(cnt -= 1) <= 0 ? ( cnt = 16; tick(); );
+
+oL = inL; oR = inR;
+a_i = 0;
+loop(nact,
+  a_bp = bandmem + listmem[a_i] * BSZ;
+  a_bp[27] ? (
+    a_ch = a_bp[6];
+    a_x = a_bp[11] ? (spl2 + spl3) * 0.5 :
+         a_ch == 2 ? (inL - inR) * 0.5 : a_ch == 3 ? inL : a_ch == 4 ? inR : (inL + inR) * 0.5;
+    a_x = abs(svf(a_x, a_bp + 118, a_bp + 116));
+    a_bp[16] = a_x > a_bp[16] ? a_x + (a_bp[16] - a_x) * a_bp[17] : a_x + (a_bp[16] - a_x) * a_bp[18];
+  );
+  a_ch = a_bp[6];
+  a_ch == 0 ? (
+    oL = run_band(oL, a_bp + 32, a_bp + 100);
+    oR = run_band(oR, a_bp + 32, a_bp + 108);
+  ) : a_ch == 1 ? (
+    a_m = (oL + oR) * 0.5; a_s = (oL - oR) * 0.5;
+    a_m = run_band(a_m, a_bp + 32, a_bp + 100);
+    oL = a_m + a_s; oR = a_m - a_s;
+  ) : a_ch == 2 ? (
+    a_m = (oL + oR) * 0.5; a_s = (oL - oR) * 0.5;
+    a_s = run_band(a_s, a_bp + 32, a_bp + 100);
+    oL = a_m + a_s; oR = a_m - a_s;
+  ) : a_ch == 3 ? (
+    oL = run_band(oL, a_bp + 32, a_bp + 100);
+  ) : (
+    oR = run_band(oR, a_bp + 32, a_bp + 108);
+  );
+  a_i += 1;
+);
+
+solo_b >= 0 ? (
+  solo_ch == 0 ? (
+    oL = svf(inL, solop, solost); oR = svf(inR, solop, solost + 2);
+  ) : solo_ch == 1 ? (
+    oL = oR = svf((inL + inR) * 0.5, solop, solost);
+  ) : solo_ch == 2 ? (
+    oL = svf((inL - inR) * 0.5, solop, solost); oR = -oL;
+  ) : solo_ch == 3 ? (
+    oL = oR = svf(inL, solop, solost);
+  ) : (
+    oL = oR = svf(inR, solop, solost + 2);
+  );
+) : slider5 ? (
+  oL -= inL; oR -= inR;
+);
+
+spl0 = oL * og; spl1 = oR * og;
+
+slider3 ? (
+  anaPost[anawp] = (spl0 + spl1) * 0.5;
+  anaPre[anawp] = (inL + inR) * 0.5;
+  (anawp += 1) >= ANAN ? anawp = 0;
+);
+a_x = max(abs(spl0), abs(spl1));
+a_x > pk_out ? pk_out = a_x;
+
+@gfx 980 580
+// ======================================================================= interfaz
+SC = gfx_ext_retina > 1 ? gfx_ext_retina : 1;
+WW = gfx_w; WH = gfx_h;
+
+function fnt(i) (
+  i == 1 ? gfx_setfont(1, "Helvetica Neue", 13 * SC) :
+  i == 2 ? gfx_setfont(2, "Helvetica Neue", 11 * SC) :
+  i == 3 ? gfx_setfont(3, "Helvetica Neue", 17 * SC, 'b') :
+  i == 4 ? gfx_setfont(4, "Helvetica Neue", 10 * SC, 'b') :
+           gfx_setfont(5, "Helvetica Neue", 12 * SC, 'b');
+);
+
+function band_rgb(b, a) local(k)
+(
+  k = b % 8;
+  k == 0 ? gfx_set(1.00, 0.47, 0.42, a) :
+  k == 1 ? gfx_set(1.00, 0.71, 0.30, a) :
+  k == 2 ? gfx_set(0.93, 0.89, 0.36, a) :
+  k == 3 ? gfx_set(0.47, 0.88, 0.52, a) :
+  k == 4 ? gfx_set(0.36, 0.84, 0.92, a) :
+  k == 5 ? gfx_set(0.47, 0.62, 1.00, a) :
+  k == 6 ? gfx_set(0.76, 0.52, 1.00, a) :
+           gfx_set(1.00, 0.52, 0.80, a);
+);
+
+// color de banda mezclado con el fondo (opaco): evita manchas al superponer formas
+function band_solid(b, k) local(r0, g0, b0)
+(
+  band_rgb(b, 1); r0 = gfx_r; g0 = gfx_g; b0 = gfx_b;
+  gfx_set(0.10 + (r0 - 0.10) * k, 0.11 + (g0 - 0.11) * k, 0.14 + (b0 - 0.14) * k, 1);
+);
+function hit_add(x, y, w, h, id) local(p)
+( hit_n < 400 ? ( p = hitmem + hit_n * 5; p[0] = x; p[1] = y; p[2] = w; p[3] = h; p[4] = id; hit_n += 1; ); );
+function hit_find(mx, my) local(i, p, r)
+(
+  r = 0; i = hit_n - 1;
+  while (i >= 0 && r == 0) (
+    p = hitmem + i * 5;
+    (mx >= p[0] && mx < p[0] + p[2] && my >= p[1] && my < p[1] + p[3]) ? r = p[4];
+    i -= 1;
+  );
+  r;
+);
+
+function frect(x, y, w, h, r) (
+  r = min(r, min(w, h) * 0.5);
+  gfx_rect(x + r, y, w - 2 * r, h, 1);
+  gfx_rect(x, y + r, r, h - 2 * r, 1);
+  gfx_rect(x + w - r, y + r, r, h - 2 * r, 1);
+  gfx_circle(x + r, y + r, r, 1, 1); gfx_circle(x + w - r - 1, y + r, r, 1, 1);
+  gfx_circle(x + r, y + h - r - 1, r, 1, 1); gfx_circle(x + w - r - 1, y + h - r - 1, r, 1, 1);
+);
+
+function text_c(str, x, y, w, h) ( gfx_x = x; gfx_y = y; gfx_drawstr(str, 1 | 4, x + w, y + h); );
+function text_l(str, x, y, h) ( gfx_x = x; gfx_y = y; gfx_drawstr(str, 4, x + 2000, y + h); );
+
+function f2x(f) ( gx + gw * log10(f / 20) / 3 );
+function x2f(x) ( 20 * 1000 ^ ((x - gx) / gw) );
+function d2y(d) ( gy + gh * 0.5 - d / DRNG * (gh * 0.5 - 8 * SC) );
+function d2yc(d) ( clamp(d2y(d), gy, gy + gh - 1) );
+function y2d(y) ( (gy + gh * 0.5 - y) / (gh * 0.5 - 8 * SC) * DRNG );
+
+function fmt_f(d, f) ( f < 1000 ? sprintf(d, "%d Hz", floor(f + 0.5)) : sprintf(d, f < 10000 ? "%.2f kHz" : "%.1f kHz", f / 1000); );
+function fmt_db(d, g) ( sprintf(d, "%s%.1f dB", g > 0.05 ? "+" : "", g); );
+
+function type_name(t) (
+  t == 0 ? "Campana" : t == 1 ? "Shelf grave" : t == 2 ? "Shelf agudo" : t == 3 ? "Corte grave (HPF)" :
+  t == 4 ? "Corte agudo (LPF)" : t == 5 ? "Notch" : "Pasa banda";
+);
+function chan_name(c) ( c == 0 ? "Estereo" : c == 1 ? "Centro (Mid)" : c == 2 ? "Lados (Side)" : c == 3 ? "Izquierda" : "Derecha"; );
+function slope_name(s) ( s == 0 ? "6 dB/oct" : s == 1 ? "12 dB/oct" : s == 2 ? "18 dB/oct" : s == 3 ? "24 dB/oct" : s == 4 ? "36 dB/oct" : "48 dB/oct"; );
+
+function button(id, x, y, w, h, str, on, b)
+(
+  hov = hover_id == id;
+  on ? ( b >= 0 ? band_solid(b, 0.9) : gfx_set(0.42, 0.78, 1.0, 1); )
+     : gfx_set(hov ? 0.24 : 0.17, hov ? 0.26 : 0.19, hov ? 0.31 : 0.24, 1);
+  frect(x, y, w, h, 5 * SC);
+  on ? gfx_set(0.07, 0.08, 0.10, 1) : gfx_set(0.86, 0.88, 0.92, 1);
+  fnt(1); text_c(str, x, y, w, h);
+  hit_add(x, y, w, h, id);
+);
+
+function dropdown(id, x, y, w, h, label, str, enabled)
+(
+  hov = hover_id == id && enabled;
+  gfx_set(hov ? 0.24 : 0.17, hov ? 0.26 : 0.19, hov ? 0.31 : 0.24, 1);
+  frect(x, y, w, h, 5 * SC);
+  fnt(2); gfx_set(0.55, 0.58, 0.65, enabled ? 1 : 0.4);
+  text_l(label, x + 8 * SC, y, h);
+  strlen(label) ? gfx_measurestr(label, _tw, _th) : _tw = -4 * SC;
+  fnt(1); gfx_set(0.90, 0.92, 0.96, enabled ? 1 : 0.35);
+  text_l(str, x + 12 * SC + _tw, y, h);
+  gfx_set(0.55, 0.58, 0.65, enabled ? 1 : 0.3);
+  _cx = x + w - 12 * SC; _cy = y + h * 0.5;
+  gfx_triangle(_cx - 4 * SC, _cy - 2 * SC, _cx + 4 * SC, _cy - 2 * SC, _cx, _cy + 3 * SC);
+  enabled ? hit_add(x, y, w, h, id);
+);
+
+function knob(id, cx, cy, r, label, str, n, bip, b, enabled) local(a0, a1, av, i, rr)
+(
+  a0 = -0.75 * $pi; a1 = 0.75 * $pi; av = a0 + (a1 - a0) * clamp(n, 0, 1);
+  fnt(2); gfx_set(0.62, 0.65, 0.72, enabled ? 1 : 0.4);
+  text_c(label, cx - 50 * SC, cy - r - 18 * SC, 100 * SC, 14 * SC);
+  gfx_set(0.13, 0.14, 0.18, 1); gfx_circle(cx, cy, r, 1, 1);
+  gfx_set(0.26, 0.28, 0.34, 1);
+  i = 0; loop(3 * SC, gfx_arc(cx, cy, r - 2 * SC - i, a0, a1, 1); i += 1; );
+  enabled ? (
+    b >= 0 ? band_rgb(b, 1) : gfx_set(0.42, 0.78, 1.0, 1);
+    i = 0; loop(3 * SC, rr = r - 2 * SC - i;
+      bip ? ( av < 0 ? gfx_arc(cx, cy, rr, av, 0, 1) : gfx_arc(cx, cy, rr, 0, av, 1); )
+          : gfx_arc(cx, cy, rr, a0, av, 1);
+      i += 1; );
+    gfx_set(0.92, 0.93, 0.96, 1);
+    gfx_line(cx + sin(av) * r * 0.25, cy - cos(av) * r * 0.25, cx + sin(av) * (r - 6 * SC), cy - cos(av) * (r - 6 * SC), 1);
+  );
+  hover_id == id && enabled ? ( gfx_set(1, 1, 1, 0.12); gfx_circle(cx, cy, r + 2 * SC, 0, 1); );
+  fnt(1); gfx_set(0.92, 0.93, 0.96, enabled ? 1 : 0.35);
+  text_c(str, cx - 50 * SC, cy + r + 3 * SC, 100 * SC, 16 * SC);
+  enabled ? hit_add(cx - r - 6 * SC, cy - r - 4 * SC, 2 * r + 12 * SC, 2 * r + 24 * SC, id);
+);
+
+// ---------------------------------------------------------- valores de controles (normalizados)
+function ctl_enabled(id) local(t)
+(
+  t = sel >= 0 ? par(sel, 1) : 0;
+  id == 8 ? 1 : sel < 0 ? 0 :
+  id == 2 ? has_gain(t) : id == 3 ? !(is_cut(t) && par(sel, 5) == 0) :
+  (id >= 4 && id <= 7) ? can_dyn(t) && par(sel, 7) != 0 : 1;
+);
+function ctl_get(id)
+(
+  id == 1 ? nlog(par(sel, 2), 20, 20000) : id == 2 ? nlin(par(sel, 3), -30, 30) : id == 3 ? nlog(par(sel, 4), 0.1, 18) :
+  id == 4 ? nlin(par(sel, 7), -24, 24) : id == 5 ? nlin(par(sel, 8), -60, 0) : id == 6 ? nlog(par(sel, 9), 0.1, 100) :
+  id == 7 ? nlog(par(sel, 10), 5, 1000) : id == 8 ? nlin(slider1, -24, 24) : 0;
+);
+function ctl_set(id, n)
+(
+  n = clamp(n, 0, 1);
+  id == 1 ? setpar(sel, 2, r10(dlog(n, 20, 20000))) :
+  id == 2 ? setpar(sel, 3, r10(dlin(n, -30, 30))) :
+  id == 3 ? setpar(sel, 4, r100(dlog(n, 0.1, 18))) :
+  id == 4 ? ( _v = r10(dlin(n, -24, 24)); setpar(sel, 7, abs(_v) < 0.1 ? (_v < 0 ? -0.1 : 0.1) : _v); ) :
+  id == 5 ? setpar(sel, 8, r10(dlin(n, -60, 0))) :
+  id == 6 ? setpar(sel, 9, r10(dlog(n, 0.1, 100))) :
+  id == 7 ? setpar(sel, 10, floor(dlog(n, 5, 1000) + 0.5)) :
+  id == 8 ? ( slider1 = r10(dlin(n, -24, 24)); slider_automate(slider1); );
+  sync_all();
+);
+function ctl_default(id)
+(
+  id == 1 ? setpar(sel, 2, 1000) : id == 2 ? setpar(sel, 3, 0) :
+  id == 3 ? setpar(sel, 4, par(sel, 1) == 0 ? 1 : par(sel, 1) >= 5 ? 4 : 0.707) :
+  id == 4 ? setpar(sel, 7, -6) : id == 5 ? setpar(sel, 8, -30) : id == 6 ? setpar(sel, 9, 5) :
+  id == 7 ? setpar(sel, 10, 120) : id == 8 ? ( slider1 = 0; slider_automate(slider1); );
+  sync_all();
+);
+
+// ---------------------------------------------------------- ayudas
+function hint_for(id) local(z)
+(
+  id == 1 ? strcpy(#hint, "Frecuencia: donde actua la banda. Arrastra arriba/abajo o usa la rueda. Shift = fino. Doble clic = 1 kHz.") :
+  id == 2 ? strcpy(#hint, "Ganancia: cuanto sube (+) o baja (-) esa zona. Para limpiar, mejor bajar que subir. Doble clic = 0 dB.") :
+  id == 3 ? strcpy(#hint, "Q (ancho): bajo = ancho y musical (0.5-1), alto = angosto para quitar una resonancia (4-10). En cortes es la resonancia.") :
+  id == 4 ? strcpy(#hint, "Rango dinamico: cuanto se mueve la banda cuando la senal pasa el umbral. Negativo = baja solo cuando molesta (de-esser). Positivo = sube.") :
+  id == 5 ? strcpy(#hint, "Umbral: desde que nivel reacciona. Mira el medidor de al lado: la banda actua cuando la barra pasa la linea amarilla.") :
+  id == 6 ? strcpy(#hint, "Ataque: que tan rapido reacciona (1 ms para s, 10-30 ms para cosas mas suaves).") :
+  id == 7 ? strcpy(#hint, "Release: que tan rapido vuelve. 60-150 ms suele sonar natural.") :
+  id == 8 ? strcpy(#hint, "Ganancia de salida. Arrastra arriba/abajo. Doble clic = 0 dB.") :
+  id == 20 ? strcpy(#hint, "Encender / apagar la banda sin borrarla (tambien: doble clic sobre su punto).") :
+  id == 21 ? strcpy(#hint, "Tipo de filtro: campana (sube/baja una zona), shelf (todo lo de abajo o de arriba), cortes (quita graves o agudos), notch (quita una nota/zumbido).") :
+  id == 22 ? strcpy(#hint, "Canal: Estereo = todo. Centro (Mid) = lo del medio (voz, bombo, 808). Lados (Side) = ambiente y ancho. O solo Izquierda / Derecha.") :
+  id == 23 ? strcpy(#hint, "Pendiente del corte: 6 dB/oct = muy suave, 24 = normal, 48 = muy abrupto.") :
+  id == 24 ? strcpy(#hint, "Solo: escucha unicamente la zona de esta banda (en un corte, lo que estas quitando). Atajo: tecla S.") :
+  id == 25 ? strcpy(#hint, "Eliminar esta banda (tambien: Alt+clic sobre el punto o tecla Suprimir).") :
+  id == 26 ? strcpy(#hint, "Fuente de la dinamica: Interna = la misma pista. Sidechain = canales 3/4 (ej. la voz enviada al Rhodes para abrirle espacio).") :
+  id == 27 ? strcpy(#hint, "Dinamica: la banda solo actua cuando esa zona suena fuerte. Ideal para s (de-esser), caja que aparece a ratos, o abrirle hueco a la voz.") :
+  id == 28 ? strcpy(#hint, "Duplicar esta banda (queda un poco mas arriba en frecuencia).") :
+  id == 30 ? strcpy(#hint, "Presets: puntos de partida, incluida la cadena de voz de Nube baja. Para guardar los tuyos usa el boton + de REAPER.") :
+  id == 31 ? strcpy(#hint, "Analizador de espectro: Salida (relleno) y Entrada (linea gris) para ver que cambio.") :
+  id == 32 ? strcpy(#hint, "Escala vertical de la grafica (no cambia el sonido).") :
+  id == 33 ? strcpy(#hint, "Escuchar cambios: suena SOLO lo que la EQ quita o agrega. Si ahi se oye la voz, te estas pasando.") :
+  id == 34 ? strcpy(#hint, "Auto gain: compensa el volumen para comparar justo (lo mas fuerte siempre parece mejor). Usa On/Off del plugin para comparar.") :
+  id == 35 ? strcpy(#hint, "Agregar banda nueva (o doble clic en la grafica donde la quieras).") :
+  (id >= 40 && id < 56) ? strcpy(#hint, "Banda: clic = seleccionar, doble clic = encender/apagar, clic derecho = menu.") :
+  (id >= 60 && id < 70) ? (
+    z = id - 60;
+    z == 0 ? strcpy(#hint, "SUB (20-60 Hz): se siente mas que se oye. Bombo y 808. En voz se corta todo esto.") :
+    z == 1 ? strcpy(#hint, "GRAVES (60-150 Hz): cuerpo del 808 y el bombo. En voz es el retumbe del micro: corte grave en 80-100 Hz.") :
+    z == 2 ? strcpy(#hint, "CUERPO / CAJA (150-400 Hz): calidez, pero el exceso suena encajonado o barroso. En Nube baja se bajo 315 Hz -5.5 dB.") :
+    z == 3 ? strcpy(#hint, "MEDIOS (400 Hz-1 kHz): si sobra suena nasal o a telefono (800 Hz-1 kHz).") :
+    z == 4 ? strcpy(#hint, "MEDIOS ALTOS (1-2.5 kHz): claridad de la voz. Aqui pelean voz, Rhodes, guitarras: abrele hueco a la voz.") :
+    z == 5 ? strcpy(#hint, "PRESENCIA (2.5-5 kHz): pone la voz adelante. Mucho cansa el oido y suena duro.") :
+    z == 6 ? strcpy(#hint, "ESES / BRILLO (5-10 kHz): sibilancia. Mejor controlarla con una banda dinamica (de-esser).") :
+             strcpy(#hint, "AIRE (10-20 kHz): brillo y aire. Los hi-hats viven aqui; con un shelf suave se abre la voz.");
+  ) :
+  id == 100 ? strcpy(#hint, "Doble clic = agregar banda | arrastra un punto = frecuencia y ganancia | rueda sobre un punto = ancho (Q) | Alt+clic = borrar | clic derecho = menu") :
+  strcpy(#hint, "Nube EQ: doble clic en la grafica para agregar una banda. Pasa el mouse sobre cualquier cosa para ver que hace.");
+);
+
+// ---------------------------------------------------------- menus
+function menu_band(b) local(r, t, c, s, str)
+(
+  t = par(b, 1); c = par(b, 6); s = par(b, 5);
+  #m = ">Tipo";
+  i = 0; loop(7, strcat(#m, i == 6 ? "|<" : "|"); t == i ? strcat(#m, "!"); strcat(#m, type_name(i)); i += 1; );
+  strcat(#m, "|>Canal");
+  i = 0; loop(5, strcat(#m, i == 4 ? "|<" : "|"); c == i ? strcat(#m, "!"); strcat(#m, chan_name(i)); i += 1; );
+  strcat(#m, is_cut(t) ? "|>Pendiente" : "|>#Pendiente (solo cortes)");
+  i = 0; loop(6, strcat(#m, i == 5 ? "|<" : "|"); s == i ? strcat(#m, "!"); strcat(#m, slope_name(i)); i += 1; );
+  strcat(#m, can_dyn(t) ? (par(b, 7) != 0 ? "|!Dinamica" : "|Dinamica") : "|#Dinamica (campana o shelf)");
+  strcat(#m, solo_b == b ? "|!Solo (escuchar esta zona)" : "|Solo (escuchar esta zona)");
+  strcat(#m, par(b, 0) == 1 ? "|Apagar banda" : "|Encender banda");
+  strcat(#m, "|Duplicar|Eliminar");
+  gfx_x = mouse_x; gfx_y = mouse_y;
+  r = gfx_showmenu(#m);
+  r >= 1 && r <= 7 ? set_type(b, r - 1) :
+  r >= 8 && r <= 12 ? ( setpar(b, 6, r - 8); sync_all(); ) :
+  r >= 13 && r <= 18 ? ( setpar(b, 5, r - 13); sync_all(); ) :
+  r == 19 ? ( setpar(b, 7, par(b, 7) != 0 ? 0 : -6); sync_all(); ) :
+  r == 20 ? ( solo_b = solo_b == b ? -1 : b; ) :
+  r == 21 ? toggle_band(b) :
+  r == 22 ? dup_band(b) :
+  r == 23 ? del_band(b);
+);
+
+function menu_presets() local(r, i)
+(
+  #m = "#PRESETS DE NUBE EQ";
+  i = 1; loop(NPRESETS, strcat(#m, "|"); strcat(#m, preset_name(i)); i += 1; );
+  gfx_x = mouse_x; gfx_y = mouse_y;
+  r = gfx_showmenu(#m);
+  r >= 2 ? load_preset(r - 1);
+);
+
+function menu_graph(mx, my) local(r, f, g)
+(
+  f = x2f(mx); g = clamp(y2d(my), -30, 30);
+  #m = "Agregar campana aqui|Agregar shelf grave|Agregar shelf agudo|Agregar corte grave (HPF)|Agregar corte agudo (LPF)|Agregar notch|>Presets";
+  i = 1; loop(NPRESETS, strcat(#m, i == NPRESETS ? "|<" : "|"); strcat(#m, preset_name(i)); i += 1; );
+  gfx_x = mouse_x; gfx_y = mouse_y;
+  r = gfx_showmenu(#m);
+  r == 1 ? add_band(0, f, g) : r == 2 ? add_band(1, f, g) : r == 3 ? add_band(2, f, g) :
+  r == 4 ? add_band(3, f, 0) : r == 5 ? add_band(4, f, 0) : r == 6 ? add_band(5, f, 0) :
+  r >= 7 ? load_preset(r - 6);
+);
+
+function node_xy(b) local(t)
+(
+  t = par(b, 1);
+  nx = f2x(par(b, 2));
+  ny = has_gain(t) ? d2y(clamp(par(b, 3), -DRNG, DRNG)) : d2y(0);
+);
+function node_at(mx, my) local(b, r, best, d)
+(
+  r = -1; best = (9 * SC) ^ 2; b = 0;
+  loop(NB,
+    par(b, 0) > 0 ? ( node_xy(b); d = (mx - nx) ^ 2 + (my - ny) ^ 2; d < best ? ( best = d; r = b; ); );
+    b += 1;
+  );
+  r;
+);
+
+// ======================================================================= layout
+DRNG = slider4 == 0 ? 6 : slider4 == 1 ? 12 : slider4 == 2 ? 24 : 30;
+TOPH = 44 * SC; PANH = 176 * SC; FOOTH = 26 * SC; ZH = 20 * SC;
+gx = 46 * SC; gy = TOPH + 6 * SC; gw = WW - gx - 16 * SC;
+gh = WH - TOPH - PANH - FOOTH - ZH - 14 * SC;
+gh < 120 * SC ? gh = 120 * SC;
+zy = gy + gh + 2 * SC;
+py = zy + ZH + 6 * SC;
+
+// ======================================================================= mouse
+mx = mouse_x; my = mouse_y;
+lb = mouse_cap & 1; rb = mouse_cap & 2;
+shift = mouse_cap & 8; alt = mouse_cap & 16;
+in_graph = mx >= gx && mx < gx + gw && my >= gy && my < gy + gh;
+hover_node = drag == 1 ? drag_b : (in_graph ? node_at(mx, my) : -1);
+hover_id = drag == 2 ? drag_ctl : hover_node >= 0 ? 1000 + hover_node : hit_find(mx, my);
+hover_id == 0 && in_graph ? hover_id = 100;
+
+lb && !last_lb ? (
+  _now = time_precise();
+  dbl = _now - last_t < 0.35 && abs(mx - last_x) < 6 * SC && abs(my - last_y) < 6 * SC;
+  last_t = dbl ? 0 : _now; last_x = mx; last_y = my;
+  hover_node >= 0 ? (
+    sel = hover_node;
+    alt ? del_band(sel) :
+    dbl ? toggle_band(sel) :
+    ( drag = 1; drag_b = sel; drag_mx = mx; drag_my = my; drag_f = log(par(sel, 2)); drag_g = par(sel, 3); );
+  ) : hover_id == 100 ? (
+    dbl ? (
+      _f = x2f(mx);
+      _f < 35 ? add_band(3, max(_f, 20), 0) : _f > 15000 ? add_band(4, _f, 0) : add_band(0, _f, clamp(y2d(my), -30, 30));
+    );
+  ) : (hover_id >= 1 && hover_id <= 8) ? (
+    dbl ? ctl_default(hover_id) : ( drag = 2; drag_ctl = hover_id; drag_my = my; drag_n = ctl_get(hover_id); );
+  ) : (hover_id >= 40 && hover_id < 56) ? (
+    sel = hover_id - 40; dbl ? toggle_band(sel);
+  ) : hover_id == 35 ? (
+    add_band(0, 1000, 0);
+  ) : hover_id == 20 ? toggle_band(sel)
+    : hover_id == 21 ? (
+      #m = ""; i = 0; loop(7, i ? strcat(#m, "|"); par(sel, 1) == i ? strcat(#m, "!"); strcat(#m, type_name(i)); i += 1; );
+      gfx_x = mouse_x; gfx_y = mouse_y; _r = gfx_showmenu(#m); _r > 0 ? set_type(sel, _r - 1);
+  ) : hover_id == 22 ? (
+      #m = ""; i = 0; loop(5, i ? strcat(#m, "|"); par(sel, 6) == i ? strcat(#m, "!"); strcat(#m, chan_name(i)); i += 1; );
+      gfx_x = mouse_x; gfx_y = mouse_y; _r = gfx_showmenu(#m); _r > 0 ? ( setpar(sel, 6, _r - 1); sync_all(); );
+  ) : hover_id == 23 ? (
+      #m = ""; i = 0; loop(6, i ? strcat(#m, "|"); par(sel, 5) == i ? strcat(#m, "!"); strcat(#m, slope_name(i)); i += 1; );
+      gfx_x = mouse_x; gfx_y = mouse_y; _r = gfx_showmenu(#m); _r > 0 ? ( setpar(sel, 5, _r - 1); sync_all(); );
+  ) : hover_id == 24 ? ( solo_b = solo_b == sel ? -1 : sel; )
+    : hover_id == 25 ? del_band(sel)
+    : hover_id == 26 ? (
+      gfx_x = mouse_x; gfx_y = mouse_y;
+      _r = gfx_showmenu(par(sel, 11) == 0 ? "!Interna (la misma pista)|Sidechain (canales 3/4)" : "Interna (la misma pista)|!Sidechain (canales 3/4)");
+      _r > 0 ? ( setpar(sel, 11, _r - 1); sync_all(); );
+  ) : hover_id == 27 ? ( setpar(sel, 7, par(sel, 7) != 0 ? 0 : -6); sync_all(); )
+    : hover_id == 28 ? dup_band(sel)
+    : hover_id == 30 ? menu_presets()
+    : hover_id == 31 ? (
+      gfx_x = mouse_x; gfx_y = mouse_y;
+      #m = ""; i = 0; loop(3, i ? strcat(#m, "|"); slider3 == i ? strcat(#m, "!"); strcat(#m, i == 0 ? "Apagado" : i == 1 ? "Salida" : "Entrada y salida"); i += 1; );
+      _r = gfx_showmenu(#m); _r > 0 ? ( slider3 = _r - 1; slider_automate(slider3); );
+  ) : hover_id == 32 ? (
+      gfx_x = mouse_x; gfx_y = mouse_y;
+      #m = ""; i = 0; loop(4, i ? strcat(#m, "|"); slider4 == i ? strcat(#m, "!"); strcat(#m, i == 0 ? "+/- 6 dB" : i == 1 ? "+/- 12 dB" : i == 2 ? "+/- 24 dB" : "+/- 30 dB"); i += 1; );
+      _r = gfx_showmenu(#m); _r > 0 ? ( slider4 = _r - 1; slider_automate(slider4); );
+  ) : hover_id == 33 ? ( slider5 = !slider5; slider_automate(slider5); )
+    : hover_id == 34 ? ( slider2 = !slider2; slider_automate(slider2); sync_all(); );
+);
+
+lb && drag == 1 ? (
+  _k = shift ? 0.1 : 1;
+  _f = exp(drag_f + (mx - drag_mx) / gw * log(1000) * _k);
+  setpar(drag_b, 2, r10(clamp(_f, 20, 20000)));
+  has_gain(par(drag_b, 1)) ? setpar(drag_b, 3, r10(clamp(drag_g - (my - drag_my) / (gh * 0.5 - 8 * SC) * DRNG * _k, -30, 30)));
+  sync_all();
+);
+lb && drag == 2 ? (
+  ctl_set(drag_ctl, drag_n + (drag_my - my) / (220 * SC) * (shift ? 0.1 : 1));
+);
+!lb ? drag = 0;
+
+rb && !last_rb ? (
+  hover_node >= 0 ? ( sel = hover_node; menu_band(sel); ) :
+  (hover_id >= 40 && hover_id < 56) ? ( sel = hover_id - 40; menu_band(sel); ) :
+  hover_id == 100 ? menu_graph(mx, my);
+);
+
+mouse_wheel != 0 ? (
+  _w = mouse_wheel / 120;
+  hover_node >= 0 ? (
+    sel = hover_node;
+    setpar(sel, 4, r100(clamp(par(sel, 4) * 2 ^ (_w * (shift ? 0.03 : 0.15)), 0.1, 18)));
+    sync_all();
+  ) : (hover_id >= 1 && hover_id <= 8) ? (
+    ctl_set(hover_id, ctl_get(hover_id) + _w * (shift ? 0.002 : 0.012));
+  );
+  mouse_wheel = 0;
+);
+
+_c = gfx_getchar();
+sel >= 0 ? (
+  (_c == 6579564 || _c == 8) ? del_band(sel) :
+  (_c == 's' || _c == 'SC') ? ( solo_b = solo_b == sel ? -1 : sel; ) :
+  (_c == 'b' || _c == 'bp') ? toggle_band(sel);
+);
+last_lb = lb; last_rb = rb;
+sel >= 0 && par(sel, 0) == 0 ? sel = -1;
+sel < 0 && nact > 0 ? sel = listmem[0];
+
+// ======================================================================= dibujo
+hit_n = 0;
+gfx_set(0.075, 0.082, 0.105, 1); gfx_rect(0, 0, WW, WH, 1);
+
+// ---- barra superior
+gfx_set(0.10, 0.11, 0.14, 1); gfx_rect(0, 0, WW, TOPH, 1);
+fnt(3); gfx_set(0.62, 0.80, 1.0, 1); text_l("NUBE", 14 * SC, 0, TOPH);
+gfx_measurestr("NUBE ", _tw, _th);
+gfx_set(0.93, 0.94, 0.97, 1); text_l("EQ", 14 * SC + _tw, 0, TOPH);
+_x = 110 * SC; _y = 9 * SC; _h = 26 * SC;
+_cmp = WW < 990 * SC;   // barra compacta en ventanas angostas
+dropdown(30, _x, _y, (_cmp ? 96 : 120) * SC, _h, "", "Presets", 1); _x += (_cmp ? 102 : 128) * SC;
+dropdown(31, _x, _y, (_cmp ? 118 : 172) * SC, _h, _cmp ? "" : "Analizador", slider3 == 0 ? "Apagado" : slider3 == 1 ? "Salida" : "Entrada+Salida", 1); _x += (_cmp ? 124 : 180) * SC;
+dropdown(32, _x, _y, (_cmp ? 78 : 112) * SC, _h, _cmp ? "" : "Escala", DRNG == 6 ? "6 dB" : DRNG == 12 ? "12 dB" : DRNG == 24 ? "24 dB" : "30 dB", 1); _x += (_cmp ? 84 : 120) * SC;
+button(33, _x, _y, (_cmp ? 82 : 130) * SC, _h, _cmp ? "Cambios" : "Escuchar cambios", slider5, -1); _x += (_cmp ? 88 : 138) * SC;
+button(34, _x, _y, (_cmp ? 56 : 90) * SC, _h, _cmp ? "Auto" : "Auto gain", slider2, -1); _x += (_cmp ? 62 : 98) * SC;
+// salida
+_ox = max(_x, WW - 168 * SC);
+_ox + 150 * SC <= WW ? (
+  gfx_set(hover_id == 8 ? 0.24 : 0.17, hover_id == 8 ? 0.26 : 0.19, hover_id == 8 ? 0.31 : 0.24, 1);
+  frect(_ox, _y, 128 * SC, _h, 5 * SC);
+  fnt(2); gfx_set(0.55, 0.58, 0.65, 1); text_l("Salida", _ox + 8 * SC, _y, _h);
+  fmt_db(#s, slider1 + (slider2 ? autocomp : 0));
+  fnt(1); gfx_set(0.92, 0.93, 0.96, 1); text_l(#s, _ox + 52 * SC, _y, _h);
+  hit_add(_ox, _y, 128 * SC, _h, 8);
+  // medidor
+  pk_out *= 0.86;
+  _pdb = 20 * log10(pk_out + 0.000000001);
+  _mh = _h; _mx = WW - 30 * SC;
+  gfx_set(0.13, 0.14, 0.18, 1); gfx_rect(_mx, _y, 12 * SC, _mh, 1);
+  _lv = clamp((_pdb + 60) / 60, 0, 1);
+  _pdb > -0.1 ? gfx_set(1, 0.35, 0.3, 1) : _pdb > -6 ? gfx_set(0.95, 0.85, 0.35, 1) : gfx_set(0.42, 0.85, 0.55, 1);
+  gfx_rect(_mx, _y + _mh * (1 - _lv), 12 * SC, _mh * _lv, 1);
+);
+
+// ---- grafica
+gfx_set(0.095, 0.105, 0.135, 1); gfx_rect(gx, gy, gw, gh, 1);
+// zonas (fondo muy suave)
+_zi = 0;
+loop(8,
+  _za = _zi == 0 ? 20 : _zi == 1 ? 60 : _zi == 2 ? 150 : _zi == 3 ? 400 : _zi == 4 ? 1000 : _zi == 5 ? 2500 : _zi == 6 ? 5000 : 10000;
+  _zb = _zi == 0 ? 60 : _zi == 1 ? 150 : _zi == 2 ? 400 : _zi == 3 ? 1000 : _zi == 4 ? 2500 : _zi == 5 ? 5000 : _zi == 6 ? 10000 : 20000;
+  _x0 = f2x(_za); _x1 = f2x(_zb);
+  _zi % 2 ? gfx_set(1, 1, 1, 0.018) : gfx_set(0, 0, 0, 0.0);
+  gfx_rect(_x0, gy, _x1 - _x0, gh, 1);
+  _hz = hover_id == 60 + _zi;
+  gfx_set(_hz ? 0.22 : 0.12, _hz ? 0.25 : 0.13, _hz ? 0.32 : 0.17, 1);
+  gfx_rect(_x0 + 1, zy, _x1 - _x0 - 2, ZH, 1);
+  _hz ? ( gfx_set(0.62, 0.80, 1.0, 0.06); gfx_rect(_x0, gy, _x1 - _x0, gh, 1); );
+  fnt(4); gfx_set(0.58, 0.62, 0.70, 1);
+  text_c(_zi == 0 ? "SUB" : _zi == 1 ? "GRAVES" : _zi == 2 ? "CUERPO / CAJA" : _zi == 3 ? "MEDIOS" : _zi == 4 ? "MEDIOS ALTOS" : _zi == 5 ? "PRESENCIA" : _zi == 6 ? "ESES / BRILLO" : "AIRE",
+         _x0, zy, _x1 - _x0, ZH);
+  hit_add(_x0, zy, _x1 - _x0, ZH, 60 + _zi);
+  _zi += 1;
+);
+// rejilla
+fnt(2);
+_dec = 10;
+loop(4,
+  _mm = 1;
+  loop(9,
+    _f = _mm * _dec;
+    _f >= 20 && _f <= 20000 ? (
+      _x = f2x(_f);
+      _major = _mm == 1 || _mm == 2 || _mm == 5;
+      gfx_set(1, 1, 1, _major ? 0.09 : 0.035); gfx_line(_x, gy, _x, gy + gh - 1);
+      _major && _f > 20 && _f < 20000 ? (
+        gfx_set(0.50, 0.53, 0.60, 1);
+        _f >= 1000 ? sprintf(#s, "%dk", _f / 1000) : sprintf(#s, "%d", _f);
+        text_c(#s, _x - 20 * SC, gy + gh - 16 * SC, 40 * SC, 14 * SC);
+      );
+    );
+    _mm += 1;
+  );
+  _dec *= 10;
+);
+_st = DRNG <= 6 ? 2 : DRNG <= 12 ? 3 : 6;
+_d = -DRNG;
+while (_d <= DRNG) (
+  _y = d2y(_d);
+  gfx_set(1, 1, 1, _d == 0 ? 0.16 : 0.05); gfx_line(gx, _y, gx + gw - 1, _y);
+  gfx_set(0.50, 0.53, 0.60, 1);
+  sprintf(#s, _d > 0 ? "+%d" : "%d", _d);
+  gfx_x = 4 * SC; gfx_y = _y - 7 * SC; gfx_drawstr(#s, 2 | 4, gx - 6 * SC, _y + 7 * SC);
+  _d += _st;
+);
+
+// ---- columnas: frecuencia y tan()
+CS = SC; NCOL = floor(gw / CS);
+(NCOL != last_ncol || srate != last_sr || gw != last_gw) ? (
+  _c = 0;
+  loop(NCOL + 1,
+    _f = x2f(gx + _c * CS);
+    colF[_c] = _f;
+    colT[_c] = tan($pi * min(_f, srate * 0.4999) / srate);
+    _c += 1;
+  );
+  last_ncol = NCOL; last_sr = srate; last_gw = gw;
+);
+
+// ---- analizador
+slider3 ? (
+  _p = anawp - FFTN; _p < 0 ? _p += ANAN;
+  _pass = 0;
+  loop(slider3 == 2 ? 2 : 1,
+    _src = _pass == 0 ? anaPost : anaPre;
+    _dst = _pass == 0 ? specPost : specPre;
+    _i = 0; _q = _p;
+    loop(FFTN,
+      fftbuf[_i] = _src[_q] * (0.5 - 0.5 * cos(2 * $pi * _i / FFTN));
+      (_q += 1) >= ANAN ? _q = 0;
+      _i += 1;
+    );
+    fft_real(fftbuf, FFTN);
+    fft_permute(fftbuf, FFTN / 2);
+    _i = 1;
+    loop(FFTN / 2 - 1,
+      _re = fftbuf[2 * _i]; _im = fftbuf[2 * _i + 1];
+      _db = 10 * log10(_re * _re + _im * _im + 0.00000000000000000001) - 20 * log10(FFTN / 4);
+      _db += 4.5 * log(max(_i * srate / FFTN, 10) / 1000) / log(2);   // inclinacion 4.5 dB/oct
+      _dst[_i] = _db > _dst[_i] ? _db : max(_db, _dst[_i] - 0.9);
+      _i += 1;
+    );
+    _pass += 1;
+  );
+  // dibujo: -90..+6 dB en toda la altura
+  _pass = slider3 == 2 ? 1 : 0;
+  while (_pass >= 0) (
+    _dst = _pass == 0 ? specPost : specPre;
+    _px = -1; _c = 0;
+    loop(NCOL,
+      _b0 = colF[_c] * 0.944 * FFTN / srate; _b1 = colF[_c] * 1.0595 * FFTN / srate;
+      _b0 >= 1 && _b0 < FFTN / 2 - 2 ? (
+        _b1 - _b0 > 3 ? (
+          _v = 0; _n = 0; _k = ceil(_b0);
+          while (_k <= floor(_b1) && _k < FFTN / 2) ( _v += 10 ^ (_dst[_k] / 10); _n += 1; _k += 1; );
+          _v = 10 * log10(_v / max(_n, 1) + 0.00000000000000000001);
+        ) : (
+          _k = floor(colF[_c] * FFTN / srate); _fr = colF[_c] * FFTN / srate - _k; _v = _dst[_k] * (1 - _fr) + _dst[_k + 1] * _fr;
+        );
+        _y = gy + gh * (1 - clamp((_v + 90) / 96, 0, 1));
+        _x = gx + _c * CS;
+        _pass == 0 ? (
+          gfx_set(0.42, 0.62, 1.0, 0.13); gfx_line(_x, _y, _x, gy + gh - 1);
+          gfx_set(0.55, 0.72, 1.0, 0.45); _px >= 0 ? gfx_line(_px, _py, _x, _y, 1);
+        ) : (
+          gfx_set(0.75, 0.75, 0.80, 0.35); _px >= 0 ? gfx_line(_px, _py, _x, _y, 1);
+        );
+        _px = _x; _py = _y;
+      );
+      _c += 1;
+    );
+    _pass -= 1;
+  );
+);
+
+// ---- curvas por banda y total
+_c = 0; loop(NCOL + 1, totMain[_c] = 1; totSide[_c] = 1; _c += 1; );
+_anyside = 0;
+_y0 = d2y(0);
+_b = 0;
+loop(NB,
+  _bp = bandmem + _b * BSZ;
+  _bp[0] > 0 ? (
+    _on = _bp[0] == 1;
+    _issel = _b == sel;
+    _on && _bp[6] == 2 ? _anyside = 1;
+    _px = -1; _c = 0;
+    loop(NCOL + 1,
+      _m = mag2(_bp + 66, colT[_c]);
+      _on ? ( _bp[6] != 2 ? totMain[_c] *= _m; (_bp[6] == 0 || _bp[6] == 2) ? totSide[_c] *= _m; );
+      _y = d2yc(10 * log10(_m + 0.00000000000000000001));
+      _x = gx + _c * CS;
+      _issel ? ( band_rgb(_b, _on ? 0.16 : 0.06); gfx_line(_x, _y0, _x, _y); );
+      band_rgb(_b, _on ? (_issel ? 0.95 : 0.55) : 0.22);
+      _px >= 0 ? gfx_line(_px, _py, _x, _y, 1);
+      _px = _x; _py = _y;
+      _c += 1;
+    );
+    // curva dinamica actual
+    _on && _bp[27] && abs(_bp[15]) > 0.05 ? (
+      _px = -1; _c = 0;
+      loop(NCOL + 1,
+        _y = d2yc(10 * log10(mag2(_bp + 32, colT[_c]) + 0.00000000000000000001));
+        _x = gx + _c * CS;
+        band_rgb(_b, 0.9); _px >= 0 ? gfx_line(_px, _py, _x, _y, 1);
+        _px = _x; _py = _y; _c += 1;
+      );
+    );
+  );
+  _b += 1;
+);
+// total
+_pass = _anyside ? 1 : 0;
+while (_pass >= 0) (
+  _px = -1; _c = 0;
+  loop(NCOL + 1,
+    _m = _pass ? totSide[_c] : totMain[_c];
+    _y = d2yc(10 * log10(_m + 0.00000000000000000001));
+    _x = gx + _c * CS;
+    _pass ? gfx_set(0.85, 0.65, 1.0, 0.75) : gfx_set(0.97, 0.98, 1.0, 1);
+    _px >= 0 ? ( gfx_line(_px, _py, _x, _y, 1); !_pass ? gfx_line(_px, _py - 1, _x, _y - 1, 1); );
+    _px = _x; _py = _y; _c += 1;
+  );
+  _pass ? ( fnt(2); gfx_set(0.85, 0.65, 1.0, 0.9); text_l("curva de Lados (Side)", gx + 8 * SC, gy + 4 * SC, 16 * SC); );
+  _pass -= 1;
+);
+hit_add(gx, gy, gw, gh, 100);
+
+// ---- puntos
+_b = 0;
+loop(NB,
+  _bp = bandmem + _b * BSZ;
+  _bp[0] > 0 ? (
+    node_xy(_b);
+    _r = 8 * SC;
+    _on = _bp[0] == 1;
+    // linea a la ganancia dinamica
+    _on && _bp[27] ? (
+      _yd = d2y(clamp(_bp[13] + _bp[15], -DRNG, DRNG));
+      band_rgb(_b, 0.8); gfx_line(nx, ny, nx, _yd, 1); gfx_line(nx - 1, ny, nx - 1, _yd, 1);
+      gfx_circle(nx, _yd, 3 * SC, 1, 1);
+    );
+    _b == sel || _b == hover_node ? ( gfx_set(1, 1, 1, _b == sel ? 0.9 : 0.4); gfx_circle(nx, ny, _r + 3 * SC, 0, 1); gfx_circle(nx, ny, _r + 3 * SC - 1, 0, 1); );
+    _on ? ( band_rgb(_b, 1); gfx_circle(nx, ny, _r, 1, 1); )
+        : ( gfx_set(0.095, 0.105, 0.135, 1); gfx_circle(nx, ny, _r, 1, 1); band_rgb(_b, 0.6); gfx_circle(nx, ny, _r, 0, 1); );
+    solo_b == _b ? ( gfx_set(1, 0.9, 0.3, 1); gfx_circle(nx, ny, _r + 6 * SC, 0, 1); );
+    fnt(4); _on ? gfx_set(0.07, 0.08, 0.10, 1) : band_rgb(_b, 0.8);
+    sprintf(#s, "%d", _b + 1); text_c(#s, nx - _r, ny - _r, 2 * _r, 2 * _r);
+    _bp[6] != 0 ? (
+      fnt(4); band_rgb(_b, 0.9);
+      text_c(_bp[6] == 1 ? "M" : _bp[6] == 2 ? "S" : _bp[6] == 3 ? "L" : "R", nx - _r, ny + _r + 1 * SC, 2 * _r, 12 * SC);
+    );
+  );
+  _b += 1;
+);
+
+// ---- tooltip del punto
+(hover_node >= 0 || drag == 1) ? (
+  _b = drag == 1 ? drag_b : hover_node;
+  node_xy(_b);
+  fmt_f(#a, par(_b, 2));
+  _t = par(_b, 1);
+  has_gain(_t) ? ( fmt_db(#c, par(_b, 3)); sprintf(#s, "%d  %s   %s   %s   Q %.2f", _b + 1, type_name(_t), #a, #c, par(_b, 4)); )
+  : is_cut(_t) ? sprintf(#s, "%d  %s   %s   %s", _b + 1, type_name(_t), #a, slope_name(par(_b, 5)))
+  : sprintf(#s, "%d  %s   %s   Q %.2f", _b + 1, type_name(_t), #a, par(_b, 4));
+  fnt(1); gfx_measurestr(#s, _tw, _th);
+  _tx = clamp(nx - _tw * 0.5 - 8 * SC, gx + 4 * SC, gx + gw - _tw - 20 * SC);
+  _ty = ny - 38 * SC; _ty < gy + 2 * SC ? _ty = ny + 18 * SC;
+  gfx_set(0.04, 0.045, 0.06, 0.92); frect(_tx, _ty, _tw + 16 * SC, 22 * SC, 5 * SC);
+  gfx_set(0.95, 0.96, 0.98, 1); text_c(#s, _tx, _ty, _tw + 16 * SC, 22 * SC);
+);
+
+nact == 0 && hover_id != 100 ? (
+  fnt(1); gfx_set(0.60, 0.64, 0.72, 0.9);
+  text_c("Doble clic en la grafica para agregar una banda  -  o elige un Preset arriba", gx, gy + gh * 0.5 - 30 * SC, gw, 20 * SC);
+);
+
+// ---- panel inferior
+gfx_set(0.10, 0.11, 0.14, 1); gfx_rect(0, py - 4 * SC, WW, WH - py + 4 * SC, 1);
+// chips de bandas
+_x = 14 * SC; _y = py + 4 * SC;
+fnt(2); gfx_set(0.55, 0.58, 0.65, 1); text_l("BANDAS", _x, _y, 22 * SC); _x += 58 * SC;
+_b = 0;
+loop(NB,
+  par(_b, 0) > 0 ? (
+    _on = par(_b, 0) == 1;
+    _on ? band_solid(_b, _b == sel ? 1 : 0.6) : gfx_set(0.22, 0.23, 0.28, 1);
+    frect(_x, _y, 26 * SC, 22 * SC, 5 * SC);
+    _b == sel ? ( gfx_set(1, 1, 1, 0.9); gfx_roundrect(_x - 1, _y - 1, 26 * SC + 1, 22 * SC + 1, 5 * SC, 1); );
+    fnt(5); _on ? gfx_set(0.07, 0.08, 0.10, 1) : band_rgb(_b, 0.9);
+    sprintf(#s, "%d", _b + 1); text_c(#s, _x, _y, 26 * SC, 22 * SC);
+    hit_add(_x, _y, 26 * SC, 22 * SC, 40 + _b);
+    _x += 30 * SC;
+  );
+  _b += 1;
+);
+free_band() >= 0 ? ( button(35, _x, _y, 26 * SC, 22 * SC, "+", 0, -1); _x += 30 * SC; );
+
+sel >= 0 ? (
+  _bp = bandmem + sel * BSZ;
+  _t = par(sel, 1);
+  _y = py + 34 * SC; _h = 26 * SC; _x = 14 * SC;
+  button(20, _x, _y, 84 * SC, _h, par(sel, 0) == 1 ? "Encendida" : "Apagada", par(sel, 0) == 1, sel); _x += 92 * SC;
+  dropdown(21, _x, _y, 200 * SC, _h, "Tipo", type_name(_t), 1); _x += 208 * SC;
+  dropdown(22, _x, _y, 180 * SC, _h, "Canal", chan_name(par(sel, 6)), 1); _x += 188 * SC;
+  is_cut(_t) ? ( dropdown(23, _x, _y, 160 * SC, _h, "Pendiente", slope_name(par(sel, 5)), 1); _x += 168 * SC; );
+  button(24, _x, _y, 60 * SC, _h, "Solo", solo_b == sel, -1); _x += 68 * SC;
+  button(28, _x, _y, 80 * SC, _h, "Duplicar", 0, -1); _x += 88 * SC;
+  button(25, _x, _y, 76 * SC, _h, "Eliminar", 0, -1);
+
+  _ky = py + 118 * SC; _kr = 22 * SC;
+  fmt_f(#s, par(sel, 2));
+  knob(1, 54 * SC, _ky, _kr, "Frecuencia", #s, ctl_get(1), 0, sel, 1);
+  fmt_db(#s, par(sel, 3));
+  knob(2, 134 * SC, _ky, _kr, "Ganancia", has_gain(_t) ? #s : "-", ctl_get(2), 1, sel, has_gain(_t));
+  sprintf(#s, "%.2f", par(sel, 4));
+  knob(3, 214 * SC, _ky, _kr, is_cut(_t) ? "Resonancia" : "Q (ancho)", ctl_enabled(3) ? #s : "-", ctl_get(3), 0, sel, ctl_enabled(3));
+
+  // seccion dinamica
+  _dx = 270 * SC;
+  gfx_set(1, 1, 1, 0.06); gfx_line(_dx, py + 72 * SC, _dx, py + 160 * SC);
+  _dx += 14 * SC;
+  _de = can_dyn(_t);
+  _don = _de && par(sel, 7) != 0;
+  _de ? button(27, _dx, py + 72 * SC, 110 * SC, 24 * SC, _don ? "Dinamica ON" : "Dinamica OFF", _don, sel)
+      : ( fnt(2); gfx_set(0.55, 0.58, 0.65, 0.6); text_l("Dinamica: solo en campana o shelf", _dx, py + 72 * SC, 24 * SC); );
+  _de ? (
+    _dsrc = par(sel, 11);
+    dropdown(26, _dx, py + 104 * SC, 110 * SC, 24 * SC, "", _dsrc ? "Sidechain 3/4" : "Interna", _don);
+    _kx = _dx + 160 * SC;
+    fmt_db(#s, par(sel, 7)); knob(4, _kx, _ky, _kr, "Rango", _don ? #s : "-", ctl_get(4), 1, sel, _don);
+    sprintf(#s, "%.1f dB", par(sel, 8)); knob(5, _kx + 80 * SC, _ky, _kr, "Umbral", _don ? #s : "-", ctl_get(5), 0, sel, _don);
+    // medidor del detector
+    _mx = _kx + 124 * SC; _mt = py + 76 * SC; _mh = 82 * SC;
+    gfx_set(0.13, 0.14, 0.18, 1); gfx_rect(_mx, _mt, 10 * SC, _mh, 1);
+    _don ? (
+      _lv = clamp((_bp[28] + 60) / 60, 0, 1);
+      _bp[28] > par(sel, 8) ? gfx_set(0.95, 0.85, 0.35, 1) : gfx_set(0.42, 0.85, 0.55, 1);
+      gfx_rect(_mx, _mt + _mh * (1 - _lv), 10 * SC, _mh * _lv, 1);
+      _ly = _mt + _mh * (1 - clamp((par(sel, 8) + 60) / 60, 0, 1));
+      gfx_set(1, 0.85, 0.2, 1); gfx_rect(_mx - 3 * SC, _ly - 1, 16 * SC, 2 * SC, 1);
+    );
+    sprintf(#s, "%.1f ms", par(sel, 9)); knob(6, _kx + 180 * SC, _ky, _kr, "Ataque", _don ? #s : "-", ctl_get(6), 0, sel, _don);
+    sprintf(#s, "%d ms", par(sel, 10)); knob(7, _kx + 260 * SC, _ky, _kr, "Release", _don ? #s : "-", ctl_get(7), 0, sel, _don);
+    _don ? (
+      fnt(2); gfx_set(0.55, 0.58, 0.65, 1);
+      fmt_db(#s, _bp[15]); strcpy(#a, "ahora: "); strcat(#a, #s);
+      text_l(#a, _dx, py + 140 * SC, 18 * SC);
+    );
+  );
+) : (
+  fnt(1); gfx_set(0.60, 0.64, 0.72, 1);
+  text_l("Ninguna banda seleccionada. Haz clic en un punto de la grafica, o agrega una:", 14 * SC, py + 34 * SC, 26 * SC);
+  _x = 14 * SC; _y = py + 70 * SC;
+  button(35, _x, _y, 120 * SC, 28 * SC, "+ Campana", 0, -1);
+  fnt(2); gfx_set(0.55, 0.58, 0.65, 1);
+  text_l("Tambien: doble clic en la grafica, o clic derecho para elegir el tipo. Las zonas de abajo de la grafica explican que hay en cada frecuencia.", 14 * SC, py + 108 * SC, 20 * SC);
+);
+
+// ---- pie: ayuda contextual
+hint_for(hover_id >= 1000 ? 100 : hover_id);
+gfx_set(0.06, 0.065, 0.085, 1); gfx_rect(0, WH - FOOTH, WW, FOOTH, 1);
+fnt(2); gfx_set(0.70, 0.73, 0.80, 1); text_l(#hint, 12 * SC, WH - FOOTH, FOOTH);
+solo_b >= 0 ? ( gfx_set(1, 0.85, 0.3, 1); sprintf(#s, "SOLO banda %d", solo_b + 1); gfx_x = WW - 200 * SC; gfx_y = WH - FOOTH; gfx_drawstr(#s, 2 | 4, WW - 12 * SC, WH); )
+: slider5 ? ( gfx_set(0.42, 0.78, 1.0, 1); gfx_x = WW - 260 * SC; gfx_y = WH - FOOTH; gfx_drawstr("ESCUCHANDO SOLO LOS CAMBIOS", 2 | 4, WW - 12 * SC, WH); );
