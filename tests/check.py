@@ -80,9 +80,10 @@ check("left_only_+6", Z, 0.01, ch=1)
 check("three_bands", db(resp(bw(4, 80, "high") + [rbj("bell", 315, -5.5, 1.2), rbj("hs", 10000, 3, 0.707)])))
 check("bypassed", Z, 0.01)
 check("out_-6", Z - 6, 0.01)
-# auto gain: compensación = -10 log10(media |H|^2) en 48 puntos log 40 Hz - 16 kHz
+# auto gain: compensación = -10 log10(media pesada de |H|^2) en 48 puntos log 40 Hz - 16 kHz
 fa = 40 * 400 ** (np.arange(48) / 47)
-comp = -10 * np.log10(np.mean(np.abs(resp([rbj("hs", 5000, 6, 0.707)], fa)) ** 2))
+wa = 1 / (1 + (fa / 2000) ** 1.2) / (1 + (60 / fa) ** 2)
+comp = -10 * np.log10(np.sum(wa * np.abs(resp([rbj("hs", 5000, 6, 0.707)], fa)) ** 2) / wa.sum())
 check("autogain_hs", db(resp([rbj("hs", 5000, 6, 0.707)])) + comp)
 check("delta_bell", db(resp([rbj("bell", 1000, 6, 1)]) - 1), 0.2, mask=db(resp([rbj("bell", 1000, 6, 1)]) - 1) > -40)
 # dinámica: seno 5k a -10 dBFS; detector ~ -10 dB, umbral -30 -> exceso 20 dB -> min(6, 15) = 6 dB

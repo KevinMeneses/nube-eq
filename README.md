@@ -38,7 +38,7 @@ abierta sigue con el código anterior.
 | Mover | Arrastra el punto: horizontal = frecuencia, vertical = ganancia. **Shift** = fino |
 | Ancho (Q) | Rueda del mouse sobre el punto o la perilla Q |
 | Encender / apagar | Doble clic sobre el punto, botón *Encendida*, o tecla **B** |
-| Borrar | **Alt+clic** sobre el punto, botón *Eliminar*, o tecla **Suprimir** |
+| Borrar | **Alt+clic** sobre el punto, botón *Eliminar*, o tecla **delete** (la de borrar del Mac; la "Supr" de teclado extendido la usa REAPER) |
 | Menú de la banda | Clic derecho sobre el punto o su número: tipo, canal, pendiente, dinámica, solo, duplicar |
 | Solo | Botón *Solo* o tecla **S** |
 | Perillas | Arrastra arriba/abajo o usa la rueda; **Shift** = fino; doble clic = valor por defecto |
@@ -84,6 +84,10 @@ Para guardar los tuyos usa el botón **+** de la ventana del FX (presets normale
     Δ, dinámica, sidechain y presets.
   - `tests/ui_demo.lua` / `tests/ui_close.lua`: abren y cierran una pestaña de demo con el plugin y audio.
   - `tests/perf.lua`: mide la CPU en el peor caso.
+  - `tests/ui.py` + `tests/ui_dump.lua` + `tests/scroll.swift`: para probar la interfaz con el mouse
+    (`cliclick`; la rueda con `swift tests/scroll.swift N`). `ui_dump.lua` lee el estado real de las bandas.
+    Probado: doble clic para agregar, arrastrar puntos, rueda (Q y perillas), menús y submenús, presets,
+    perillas, chips, Alt+clic, doble clic para apagar, teclas S y delete, Duplicar, Eliminar, +, Salida y zonas.
 
 ## Detalles técnicos
 
@@ -91,7 +95,8 @@ Para guardar los tuyos usa el botón **+** de la ventana del FX (presets normale
   (frecuencia, ganancia y Q se suavizan en ~25 ms; la dinámica recalcula cada 16 muestras).
 - Banda dinámica: detector pasa banda en la frecuencia de la banda (pasa bajos/altos en shelfs), envolvente
   de pico con ataque/release, y ganancia = rango · mín(1, exceso·0.75/|rango|) (≈ 4:1).
-- Auto gain: −10·log10 de la potencia media de la curva en 48 puntos log entre 40 Hz y 16 kHz (no bombea).
+- Auto gain: −10·log10 de la potencia media de la curva en 48 puntos log entre 40 Hz y 16 kHz, pesada como el espectro
+  de una mezcla (cae arriba de 2 kHz y abajo de 60 Hz), limitado a ±12 dB. No bombea. No se aplica en "Escuchar cambios".
 - Trampas de EEL2 que ya mordieron: los nombres de variables **no distinguen mayúsculas** (`B` = `b`),
   no usar notación científica (`1e-9`), y la interfaz corre en otro hilo que el audio (por eso las funciones de
   coeficientes de la interfaz son copias `_ui` y las variables del audio llevan prefijo `a_`).

@@ -172,9 +172,10 @@ function snap(bp)
   calc_proc(bp);
 );
 
-function calc_autogain() local(i, f, tn, j, bp, tot, acc)
+function calc_autogain() local(i, f, tn, j, bp, tot, acc, w, ws)
 (
-  acc = 0; i = 0;
+  // promedio de |H|^2 pesado como el espectro de una mezcla (cae arriba de ~2 kHz y abajo de 60 Hz)
+  acc = 0; ws = 0; i = 0;
   loop(48,
     f = 40 * 400 ^ (i / 47);
     tn = tan($pi * min(f, srate * 0.475) / srate);
@@ -184,9 +185,10 @@ function calc_autogain() local(i, f, tn, j, bp, tot, acc)
       bp[6] != 2 ? tot *= mag2(bp + 66, tn);
       j += 1;
     );
-    acc += tot; i += 1;
+    w = 1 / (1 + (f / 2000) ^ 1.2) / (1 + (60 / f) ^ 2);
+    acc += tot * w; ws += w; i += 1;
   );
-  autocomp = clamp(-10 * log10(acc / 48 + 0.000000000001), -24, 24);
+  autocomp = clamp(-10 * log10(acc / ws + 0.000000000001), -12, 12);
 );
 
 function sync_all() local(b, bp, i, ost, oty, osl, och, newst)
@@ -210,7 +212,7 @@ function sync_all() local(b, bp, i, ost, oty, osl, och, newst)
   );
   calc_autogain();
   solo_b >= 0 ? ( par(solo_b, 0) != 1 ? solo_b = -1; );
-  og_target = db2a(slider1 + (slider2 ? autocomp : 0));
+  og_target = db2a(slider1 + (slider2 && !slider5 ? autocomp : 0));
 );
 
 // ---------------------------------------------------------------- tick de control (cada 16 muestras)
@@ -350,14 +352,14 @@ function dup_band(src) local(b, i)
 function del_band(b) ( b >= 0 ? ( setpar(b, 0, 0); solo_b == b ? solo_b = -1; sel == b ? sel = -1; sync_all(); ); );
 function toggle_band(b) ( b >= 0 ? ( setpar(b, 0, par(b, 0) == 1 ? 2 : 1); sync_all(); ); );
 
+function q_default(t) ( t == 0 ? 1 : t >= 5 ? 4 : 0.707; );
+function q_family(t) ( t == 0 || t >= 5 ? 0 : 1; );   // 0 = campana/notch/pasa banda, 1 = shelf/corte
 function set_type(b, t) local(q, ot)
 (
   ot = par(b, 1); q = par(b, 4);
   setpar(b, 1, t);
-  // ancho por defecto razonable al cambiar de familia
-  (t == 0 && q == 0.707) ? setpar(b, 4, 1);
-  ((t >= 1 && t <= 4) && (q == 1 || ot >= 5)) ? setpar(b, 4, 0.707);
-  (t >= 5 && ot < 5) ? setpar(b, 4, 4);
+  // un Q de campana no sirve como resonancia de un corte (ni al revés): volver al valor normal del tipo
+  (q_family(t) != q_family(ot) || abs(q - q_default(ot)) < 0.01) ? setpar(b, 4, q_default(t));
   !can_dyn(t) ? setpar(b, 7, 0);
   sync_all();
 );
@@ -453,7 +455,7 @@ function fnt(i) (
 
 function band_rgb(b, a) local(k)
 (
-  k = b % 8;
+  k = b % 16;
   k == 0 ? gfx_set(1.00, 0.47, 0.42, a) :
   k == 1 ? gfx_set(1.00, 0.71, 0.30, a) :
   k == 2 ? gfx_set(0.93, 0.89, 0.36, a) :
@@ -461,10 +463,17 @@ function band_rgb(b, a) local(k)
   k == 4 ? gfx_set(0.36, 0.84, 0.92, a) :
   k == 5 ? gfx_set(0.47, 0.62, 1.00, a) :
   k == 6 ? gfx_set(0.76, 0.52, 1.00, a) :
-           gfx_set(1.00, 0.52, 0.80, a);
+  k == 7 ? gfx_set(1.00, 0.52, 0.80, a) :
+  k == 8 ? gfx_set(1.00, 0.62, 0.55, a) :
+  k == 9 ? gfx_set(0.80, 0.95, 0.40, a) :
+  k == 10 ? gfx_set(0.30, 0.90, 0.75, a) :
+  k == 11 ? gfx_set(0.62, 0.80, 1.00, a) :
+  k == 12 ? gfx_set(0.90, 0.40, 0.95, a) :
+  k == 13 ? gfx_set(1.00, 0.85, 0.60, a) :
+  k == 14 ? gfx_set(0.55, 0.95, 0.95, a) :
+            gfx_set(0.85, 0.85, 0.90, a);
 );
 
-// color de banda mezclado con el fondo (opaco): evita manchas al superponer formas
 function band_solid(b, k) local(r0, g0, b0)
 (
   band_rgb(b, 1); r0 = gfx_r; g0 = gfx_g; b0 = gfx_b;
@@ -613,7 +622,7 @@ function hint_for(id) local(z)
   id == 22 ? strcpy(#hint, "Canal: Estereo = todo. Centro (Mid) = lo del medio (voz, bombo, 808). Lados (Side) = ambiente y ancho. O solo Izquierda / Derecha.") :
   id == 23 ? strcpy(#hint, "Pendiente del corte: 6 dB/oct = muy suave, 24 = normal, 48 = muy abrupto.") :
   id == 24 ? strcpy(#hint, "Solo: escucha unicamente la zona de esta banda (en un corte, lo que estas quitando). Atajo: tecla S.") :
-  id == 25 ? strcpy(#hint, "Eliminar esta banda (tambien: Alt+clic sobre el punto o tecla Suprimir).") :
+  id == 25 ? strcpy(#hint, "Eliminar esta banda (tambien: Alt+clic sobre el punto o la tecla delete / borrar).") :
   id == 26 ? strcpy(#hint, "Fuente de la dinamica: Interna = la misma pista. Sidechain = canales 3/4 (ej. la voz enviada al Rhodes para abrirle espacio).") :
   id == 27 ? strcpy(#hint, "Dinamica: la banda solo actua cuando esa zona suena fuerte. Ideal para s (de-esser), caja que aparece a ratos, o abrirle hueco a la voz.") :
   id == 28 ? strcpy(#hint, "Duplicar esta banda (queda un poco mas arriba en frecuencia).") :
