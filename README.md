@@ -1,5 +1,26 @@
+<!-- en -->
 # Nube EQ
 
+A free parametric equalizer for [REAPER](https://www.reaper.fm), written as a JSFX (macOS / Windows / Linux), part of the
+[Nube plugins](https://github.com/KevinMeneses/nube-plugins).
+
+![Nube EQ](docs/captura.png)
+
+16 bands, 7 filter types, 6–48 dB/oct slopes, per-band channel (stereo / mid / side / L / R), dynamic bands with external sidechain, solo, delta listen, auto gain, live analyzer with explained frequency zones, and presets. Minimum phase, zero latency, ~0.3 % CPU in the worst case.
+
+**Install** — with [ReaPack](https://reapack.com): *Extensions → ReaPack → Import repositories*, paste
+`https://github.com/KevinMeneses/nube-plugins/raw/main/index.xml`, then install **Nube EQ**. Or copy `nube_eq.jsfx`
+into `REAPER/Effects/Nube EQ/` (on macOS `./install.sh` links it). It shows up as **JS: Nube EQ**. The interface is in Spanish.
+
+**How it was made** — designed and built with [Claude Code](https://claude.com/claude-code). Since an AI can't
+listen, every feature is verified by rendering test cases inside REAPER and comparing them with the theory
+(`tests/run.sh`), plus mouse-driven UI tests (`tests/ui_test.py`).
+
+**License** — GPL-3.0-or-later (see `LICENSE`).
+
+---
+
+## Español
 Ecualizador paramétrico para REAPER (JSFX, macOS/Windows/Linux), pensado para mezclar voz y beats sin pelearse con la interfaz.
 
 ![Nube EQ](docs/captura.png)
@@ -101,3 +122,5 @@ Para guardar los tuyos usa el botón **+** de la ventana del FX (presets normale
   no usar notación científica (`1e-9`), y la interfaz corre en otro hilo que el audio (por eso las funciones de
   coeficientes de la interfaz son copias `_ui` y las variables del audio llevan prefijo `a_`).
   REAPER expone los sliders con forma `:log` normalizados 0–1 en `TrackFX_SetParam`.
+
+Nota sobre las pruebas: necesitan REAPER y Python con numpy, scipy y soundfile (`NUBE_PY=/ruta/a/python tests/run.sh`). Los casos con voz o música real usan grabaciones propias que no están en el repo (`tests/signals/`); sin ellas esos casos no se pueden correr.

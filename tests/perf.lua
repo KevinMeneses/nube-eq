@@ -1,5 +1,5 @@
 -- Peor caso: 16 bandas dinámicas en Mid; render de 60 s; escribe el factor de tiempo real.
-local OUT = os.getenv("HOME") .. "/Music/NubeEQ/tests/out"
+local OUT = debug.getinfo(1, "S").source:match("^@(.*)/[^/]*$") .. "/out"
 local AUDIO = os.getenv("HOME") .. "/Music/ClaudeBeats/Master/Nube baja (master X20).wav"
 local f = io.open(OUT .. "/perf.txt", "w")
 reaper.Main_OnCommand(40859, 0)

@@ -1,6 +1,7 @@
 desc:Nube EQ - ecualizador parametrico (16 bandas, M/SC, dinamico)
 //tags: equalizer eq parametric dynamic mid-side analyzer
-//author: Kev Meneses + Claude
+//author: Kev Meneses + Claude (Claude Code)
+//license: GPL-3.0-or-later
 //version: 1.0.0
 //
 // ARCHIVO GENERADO por tools/build.py a partir de src/nube_eq.template.jsfx.

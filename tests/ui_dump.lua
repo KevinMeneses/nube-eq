@@ -1,5 +1,5 @@
 -- Escribe el estado de las bandas del Nube EQ de la pista 1 (pestaña actual) en tests/out/dump.txt
-local OUT = os.getenv("HOME") .. "/Music/NubeEQ/tests/out"
+local OUT = debug.getinfo(1, "S").source:match("^@(.*)/[^/]*$") .. "/out"
 local f = io.open(OUT .. "/dump.txt", "w")
 local tr = reaper.GetTrack(0, 0); local fx = 0
 for b = 1, 16 do

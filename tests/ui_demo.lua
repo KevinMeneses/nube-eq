@@ -1,6 +1,6 @@
 -- Abre una pestaña de demo: pista con audio (fader en -inf, no suena), Nube EQ con bandas tipo "Nube baja",
 -- ventana del FX flotante y reproducción en loop para ver el analizador. Cerrar con tests/ui_close.lua.
-local ROOT = os.getenv("HOME") .. "/Music/NubeEQ/tests"
+local ROOT = debug.getinfo(1, "S").source:match("^@(.*)/[^/]*$")
 local AUDIO = os.getenv("NUBE_AUDIO") or (os.getenv("HOME") .. "/Music/ClaudeBeats/Master/Nube baja (master X20).wav")
 local FR, Q, AT, RE = 2, 4, 9, 10
 local LOGP = {[FR] = {20, 20000, 1000}, [Q] = {0.1, 18, 1}, [AT] = {0.1, 100, 5}, [RE] = {5, 1000, 100}}
