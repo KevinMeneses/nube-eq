@@ -23,6 +23,21 @@ PRESETS = [
     "808 / bajo limpio",
     "Hi-hats y clap sin siseo",
     "Master sutil (Nube baja)",
+    "Voz trap - brillo y aire",
+    "Voz drill - presencia agresiva",
+    "Voz R&B - calida y suave",
+    "Coros / dobles - atras",
+    "808 - que se escuche en celulares",
+    "Kick - golpe y click",
+    "Snare / clap - cuerpo y brillo",
+    "Hi-hats - suaves (lo-fi)",
+    "Pads / keys - hueco para la voz (M/S)",
+    "Guitarra acustica - limpia",
+    "Bajo / synth bass - definicion",
+    "Lo-fi - telefono viejo / cassette",
+    "Master - sonrisa (graves y aire)",
+    "Master - M/S (centro firme y lados abiertos)",
+    "Sidechain: el kick baja el 808 (3/4)",
     "Vacio (sin bandas)",
 ]
 
@@ -32,7 +47,7 @@ GLOBALS = [
     (3, "1<0,2,1{Apagado,Salida,Entrada y salida}>-Analizador"),
     (4, "1<0,3,1{6 dB,12 dB,24 dB,30 dB}>-Escala de la grafica"),
     (5, "0<0,1,1{Normal,Solo los cambios}>-Escuchar cambios"),
-    (6, "0<0,9,1{-,%s}>-Cargar preset" % ",".join(PRESETS)),
+    (6, "0<0,%d,1{-,%s}>-Cargar preset" % (len(PRESETS), ",".join(PRESETS))),
 ]
 
 TYPES = "Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda"

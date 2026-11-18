@@ -2,7 +2,7 @@ desc:Nube EQ - ecualizador parametrico (16 bandas, M/SC, dinamico)
 //tags: equalizer eq parametric dynamic mid-side analyzer
 //author: Kev Meneses + Claude (Claude Code)
 //license: GPL-3.0-or-later
-//version: 1.0.0
+//version: 1.1.0
 //
 // ARCHIVO GENERADO por tools/build.py a partir de src/nube_eq.template.jsfx.
 // No editar el .jsfx directamente: editar la plantilla y correr `python3 tools/build.py`.
@@ -12,7 +12,7 @@ slider2:0<0,1,1{Apagado,Encendido}>-Auto gain
 slider3:1<0,2,1{Apagado,Salida,Entrada y salida}>-Analizador
 slider4:1<0,3,1{6 dB,12 dB,24 dB,30 dB}>-Escala de la grafica
 slider5:0<0,1,1{Normal,Solo los cambios}>-Escuchar cambios
-slider6:0<0,9,1{-,Voz Tonor - Nube baja (cadena exacta),Voz rap - punto de partida,Voz hablada tipo radio / telefono,De-esser (banda dinamica en las s),Hueco para la voz (Rhodes o coros; sidechain 3/4),808 / bajo limpio,Hi-hats y clap sin siseo,Master sutil (Nube baja),Vacio (sin bandas)}>-Cargar preset
+slider6:0<0,24,1{-,Voz Tonor - Nube baja (cadena exacta),Voz rap - punto de partida,Voz hablada tipo radio / telefono,De-esser (banda dinamica en las s),Hueco para la voz (Rhodes o coros; sidechain 3/4),808 / bajo limpio,Hi-hats y clap sin siseo,Master sutil (Nube baja),Voz trap - brillo y aire,Voz drill - presencia agresiva,Voz R&B - calida y suave,Coros / dobles - atras,808 - que se escuche en celulares,Kick - golpe y click,Snare / clap - cuerpo y brillo,Hi-hats - suaves (lo-fi),Pads / keys - hueco para la voz (M/S),Guitarra acustica - limpia,Bajo / synth bass - definicion,Lo-fi - telefono viejo / cassette,Master - sonrisa (graves y aire),Master - M/S (centro firme y lados abiertos),Sidechain: el kick baja el 808 (3/4),Vacio (sin bandas)}>-Cargar preset
 slider11:0<0,2,1{Sin usar,Encendida,Apagada}>-B1 Estado
 slider12:0<0,6,1{Campana,Shelf grave,Shelf agudo,Corte grave (HPF),Corte agudo (LPF),Notch,Pasa banda}>-B1 Tipo
 slider13:1000<20,20000,0.1:log=1000>-B1 Frecuencia (Hz)
@@ -506,7 +506,7 @@ function band_dyn(b, rg, thr, att, rel, src)
 ( setpar(b, 7, rg); setpar(b, 8, thr); setpar(b, 9, att); setpar(b, 10, rel); setpar(b, 11, src); );
 function clear_all() local(b) ( b = 0; loop(NB, par(b, 0) != 0 ? setpar(b, 0, 0); b += 1; ); solo_b = -1; sel = -1; );
 
-NPRESETS = 9;
+NPRESETS = 24;
 function preset_name(n)
 (
   n == 1 ? "Voz Tonor - Nube baja (cadena exacta)" :
@@ -517,7 +517,22 @@ function preset_name(n)
   n == 6 ? "808 / bajo limpio" :
   n == 7 ? "Hi-hats y clap sin siseo" :
   n == 8 ? "Master sutil (Nube baja)" :
-  n == 9 ? "Vacio (sin bandas)" : "";
+  n == 9 ? "Voz trap - brillo y aire" :
+  n == 10 ? "Voz drill - presencia agresiva" :
+  n == 11 ? "Voz R&B - calida y suave" :
+  n == 12 ? "Coros / dobles - atras" :
+  n == 13 ? "808 - que se escuche en celulares" :
+  n == 14 ? "Kick - golpe y click" :
+  n == 15 ? "Snare / clap - cuerpo y brillo" :
+  n == 16 ? "Hi-hats - suaves (lo-fi)" :
+  n == 17 ? "Pads / keys - hueco para la voz (M/S)" :
+  n == 18 ? "Guitarra acustica - limpia" :
+  n == 19 ? "Bajo / synth bass - definicion" :
+  n == 20 ? "Lo-fi - telefono viejo / cassette" :
+  n == 21 ? "Master - sonrisa (graves y aire)" :
+  n == 22 ? "Master - M/S (centro firme y lados abiertos)" :
+  n == 23 ? "Sidechain: el kick baja el 808 (3/4)" :
+  n == 24 ? "Vacio (sin bandas)" : "";
 );
 
 function load_preset(n)
@@ -563,6 +578,74 @@ function load_preset(n)
     band_set(1, 1, 0, 250, -0.8, 1.0, 3, 0);
     band_set(2, 1, 0, 3000, 0.9, 1.0, 3, 0);
     band_set(3, 1, 2, 10000, 1.4, 0.7, 3, 0);
+  ) : n == 9 ? (
+    band_set(0, 1, 3, 90, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 250, -2.5, 1, 3, 0);
+    band_set(2, 1, 0, 3500, 2, 0.9, 3, 0);
+    band_set(3, 1, 0, 6500, 0, 1.6, 3, 0); band_dyn(3, -6, -32, 1, 80, 0);
+    band_set(4, 1, 2, 12000, 3, 0.7, 3, 0);
+  ) : n == 10 ? (
+    band_set(0, 1, 3, 110, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 400, -3, 1.2, 3, 0);
+    band_set(2, 1, 0, 2000, 2.5, 1, 3, 0);
+    band_set(3, 1, 0, 5000, 2, 1.5, 3, 0);
+    band_set(4, 1, 0, 7000, 0, 1.6, 3, 0); band_dyn(4, -6, -32, 1, 80, 0);
+  ) : n == 11 ? (
+    band_set(0, 1, 3, 70, 0, 0.707, 3, 0);
+    band_set(1, 1, 1, 180, 1.5, 0.7, 3, 0);
+    band_set(2, 1, 0, 4500, 0, 1.4, 3, 0); band_dyn(2, -4, -34, 2, 120, 0);
+    band_set(3, 1, 2, 10000, 2, 0.7, 3, 0);
+  ) : n == 12 ? (
+    band_set(0, 1, 3, 200, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 3000, -2, 0.8, 3, 0);
+    band_set(2, 1, 4, 9000, 0, 0.707, 1, 0);
+  ) : n == 13 ? (
+    band_set(0, 1, 3, 28, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 100, 2.5, 1.2, 3, 0);
+    band_set(2, 1, 0, 300, -2, 1, 3, 0);
+  ) : n == 14 ? (
+    band_set(0, 1, 3, 30, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 60, 2, 1.2, 3, 0);
+    band_set(2, 1, 0, 300, -4, 1.5, 3, 0);
+    band_set(3, 1, 0, 3500, 3, 1.5, 3, 0);
+  ) : n == 15 ? (
+    band_set(0, 1, 3, 120, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 200, 2, 1.2, 3, 0);
+    band_set(2, 1, 0, 800, -2, 2, 3, 0);
+    band_set(3, 1, 2, 8000, 2.5, 0.7, 3, 0);
+  ) : n == 16 ? (
+    band_set(0, 1, 3, 400, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 6000, -2, 1, 3, 0);
+    band_set(2, 1, 4, 9000, 0, 0.707, 1, 0);
+  ) : n == 17 ? (
+    band_set(0, 1, 3, 120, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 2500, -3, 0.8, 3, 1);
+    band_set(2, 1, 2, 10000, 1.5, 0.7, 3, 2);
+  ) : n == 18 ? (
+    band_set(0, 1, 3, 90, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 200, -3, 1.2, 3, 0);
+    band_set(2, 1, 0, 5000, 2, 1, 3, 0);
+    band_set(3, 1, 2, 12000, 1.5, 0.7, 3, 0);
+  ) : n == 19 ? (
+    band_set(0, 1, 3, 35, 0, 0.707, 3, 0);
+    band_set(1, 1, 0, 80, 1.5, 1, 3, 0);
+    band_set(2, 1, 0, 250, -2.5, 1.2, 3, 0);
+    band_set(3, 1, 0, 900, 2, 1.5, 3, 0);
+  ) : n == 20 ? (
+    band_set(0, 1, 3, 250, 0, 0.707, 1, 0);
+    band_set(1, 1, 4, 5000, 0, 0.707, 1, 0);
+    band_set(2, 1, 0, 1000, 3, 0.8, 3, 0);
+  ) : n == 21 ? (
+    band_set(0, 1, 3, 25, 0, 0.707, 3, 0);
+    band_set(1, 1, 1, 80, 1, 0.7, 3, 0);
+    band_set(2, 1, 0, 400, -0.8, 0.8, 3, 0);
+    band_set(3, 1, 2, 12000, 1.5, 0.7, 3, 0);
+  ) : n == 22 ? (
+    band_set(0, 1, 3, 25, 0, 0.707, 3, 0);
+    band_set(1, 1, 3, 150, 0, 0.707, 1, 2);
+    band_set(2, 1, 2, 8000, 1.5, 0.7, 3, 2);
+  ) : n == 23 ? (
+    band_set(0, 1, 0, 60, 0, 1, 3, 0); band_dyn(0, -6, -40, 2, 100, 1);
   );
   sync_all();
 );
